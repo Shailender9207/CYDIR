@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="assets/img/logoSmall.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <title>UCTPL</title>
+
+
+
+    <style>
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+    </style>
+
+
+
+
+
+
+    <!-- for google map popup from footer -->
+
+    <style>
+        .custom-model-main {
+            text-align: center;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* z-index: 1050; */
+            -webkit-overflow-scrolling: touch;
+            outline: 0;
+            opacity: 0;
+            -webkit-transition: opacity 0.15s linear, z-index 0.15;
+            -o-transition: opacity 0.15s linear, z-index 0.15;
+            transition: opacity 0.15s linear, z-index 0.15;
+            z-index: -1;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .model-open {
+            z-index: 99999;
+            opacity: 1;
+            overflow: hidden;
+        }
+
+        .custom-model-inner {
+            -webkit-transform: translate(0, -25%);
+            -ms-transform: translate(0, -25%);
+            transform: translate(0, -25%);
+            -webkit-transition: -webkit-transform 0.3s ease-out;
+            -o-transition: -o-transform 0.3s ease-out;
+            transition: -webkit-transform 0.3s ease-out;
+            -o-transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+            display: inline-block;
+            vertical-align: middle;
+            width: 600px;
+            margin: 30px auto;
+            max-width: 97%;
+        }
+
+        .custom-model-wrap {
+            display: block;
+            width: 100%;
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #999;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            background-clip: padding-box;
+            outline: 0;
+            text-align: left;
+            padding: 20px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .model-open .custom-model-inner {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            transform: translate(0, 0);
+            position: relative;
+            z-index: 999;
+        }
+
+        .model-open .bg-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99;
+        }
+
+        .bg-overlay {
+            background: rgba(0, 0, 0, 0);
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            -webkit-transition: background 0.15s linear;
+            -o-transition: background 0.15s linear;
+            transition: background 0.15s linear;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 0;
+            top: -30px;
+            cursor: pointer;
+            z-index: 99;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        @media screen and (min-width:800px) {
+            .custom-model-main:before {
+                content: "";
+                display: inline-block;
+                height: auto;
+                vertical-align: middle;
+                margin-right: -0px;
+                height: 100%;
+            }
+        }
+
+        @media screen and (max-width:799px) {
+            .custom-model-inner {
+                margin-top: 45px;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- completed dependencies container for google maps popup from footer -->
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="logo__container">
+
+                <img src="../../assets/img/logoSmall.png" style="width:12%; border-radius: 0px !important;">
+                <a href="#" class="nav__logo"> &nbsp; FEDICOMS</a>
+            </div>
+
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link active-link">HOME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/About/" class="nav__link">ABOUT US</a>
+                    </li>
+                    <li class="nav__item">
+                        <div class="dropdown">
+                            <div class=" dropbtn">SERVICES
+                                <i class="ri-arrow-drop-down-line"></i>
+                            </div>
+                            <div class="dropdown-content">
+                                <a class="nav__link" href="/Services/CampaignManagement/">Customer Engagement</a>
+                                <a class="nav__link" href="/Services/LoyaltySolutions/">Loyalty Solutions</a>
+                                <a class="nav__link" href="/Services/DigitalSolutions/">Digital Solutions</a>
+                                <a class="nav__link" href="/Services/DigiPass/">DigiPass - VMS</a>
+                                <a class="nav__link" href="/Services/CorporateGifting/">Corporate Gifting</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/Career/" class="nav__link">CAREER</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/Contact/" class="nav__link">CONTACT</a>
+                    </li>
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home" id="home" class="home1 container1" id="home1" style="padding: 15px !important; ">
+
+            <!-- starting division for home background effect or image -->
+            <div src="#" alt="#" class="home__img">
+
+
+                <div id="particles" style="width: auto; height:100%;"></div>
+
+                <!--Sources to use js libraries-->
+                <script src="assets/js/particles.min.js"></script>
+                <!-- <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
+                <!-- <script src="/scripts.js"></script> -->
+
+
+
+
+
+                <script>
+
+                    let nrOfParticles = 100
+                    let densityOfParticles = 700
+                    let lineColor = "45B0FF"
+                    let lineWidth = 0.5
+                    let movementSpeed = 4
+
+                    particlesJS("particles", {
+                        particles: {
+                            number: { value: nrOfParticles, density: { enable: true, value_area: densityOfParticles } },
+                            size: { value: 0 },
+                            line_linked: {
+                                enable: true,
+                                distance: 250,
+                                color: lineColor,
+                                opacity: 1,
+                                width: lineWidth
+                            },
+                            move: {
+                                enable: true,
+                                speed: movementSpeed,
+                                direction: "right",
+                                random: true,
+                                straight: true,
+                                out_mode: "out",
+                                bounce: false,
+                                attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                            }
+                        },
+                        interactivity: {
+                            detect_on: "canvas",
+                            events: {
+                                onhover: { enable: true, mode: "grab" },
+                                onclick: { enable: true, mode: "push" },
+                                resize: true
+                            },
+                            modes: {
+                                grab: { distance: 400, line_linked: { opacity: 1 } },
+                                bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+                                repulse: { distance: 200, duration: 0.4 },
+                                push: { particles_nb: 4 },
+                                remove: { particles_nb: 2 }
+                            }
+                        },
+                        retina_detect: true
+                    });
+                    var count_particles, stats, update;
+
+                    document.body.appendChild(stats.domElement);
+                    count_particles = document.querySelector(".js-count-particles");
+                    update = function () {
+                        stats.begin();
+                        stats.end();
+                        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+                            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+                        }
+                        requestAnimationFrame(update);
+                    };
+                    requestAnimationFrame(update);
+
+                </script>
+
+
+
+            </div>
+            <!-- closing of division for home background effect and image -->
+
+            <div class="swiper home-swiper">
+                <div class="swiper-wrapper">
+
+
+
+
+
+
+
+                    <!-- HOME SLIDER 1 -->
+                    <section class="swiper-slide">
+                        <div class="home__content1 grid1">
+
+                            <div class="home__group1">
+                                <img src="assets/img/home1-img.png" alt="" class="home__img1">
+
+                            </div>
+
+                            <div class="home__data1">
+                                <h1 class="home__title1">CUSTOMER ENGAGEMENT</h1>
+                                <p class="home__description1">
+                                    Engage deeper with your customers across any preferred communication channels and
+                                    Expand opportunities with Fedicoms Mobile’s Communication APIs and Omni-channel
+                                    Solutions to deliver exceptional customer experience. Use our simplified
+                                    communication solutions to run multiple campaigns across different channels and
+                                    Engage with your users in real-time with innovative communication strategies and
+                                    improved engagement.</a></li>
+
+                                    <br />
+
+                                    <br />
+
+
+                                    <a href="/Services/CampaignManagement/" class="button">Know More</a>
+
+
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- HOME SLIDER 2 -->
+                    <section class="swiper-slide">
+                        <div class="home__content1 grid1">
+
+                            <div class="home__group1">
+                                <img src="assets/img/home2-img.png" alt="" class="home__img1    ">
+
+                            </div>
+
+                            <div class="home__data1">
+                                <h1 class="home__title1">LOYALTY SOLUTIONS</h1>
+                                <p class="home__description1">
+
+                                    <!-- <ul class="listt">
+
+
+                                    <li><a href="/Services/LoyaltySolutions/#consumerLoyalty"
+                                            class="footer__link"> -->
+
+
+                                    We design loyalty solutions for the Trade/channel Partners, Consumers, emplyees
+                                    along with referal programs and contests to increase sales and enhance customer
+                                    stickness with brands. </a></li>
+
+                                    <br />
+
+                                    <br />
+
+
+                                    <a href="/Services/LoyaltySolutions/" class="button">Know More</a>
+
+
+                                    <!-- </ul> -->
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- HOME SLIDER 3 -->
+                    <section class="swiper-slide">
+                        <div class="home__content1 grid1">
+
+                            <div class="home__group1">
+                                <img src="assets/img/home3-img.png" alt="" class="home__img1    ">
+
+                            </div>
+
+                            <div class="home__data1">
+                                <h1 class="home__title1">DIGITAL SOLUTIONS</h1>
+                                <p class="home__description1">
+
+                                    <!-- <ul class="listt">
+
+                                    <li><a href="/Services/DigitalSolutions/#Gamification"
+                                            class="footer__link"> -->
+
+                                    Digital solutions have made it possible for businesses to rethink the way they can
+                                    tackle problems in simple, efficient, innovative and scalable ways. These digital
+                                    solutions and technologies can work together or apart, giving you the freedom to
+                                    pick and mix the right solutions to suit your needs. Our Digital solutions offerings
+                                    are more about digitalizing legacy processes revisiting customer experience and
+                                    reducing costs.</li>
+
+                                    <br />
+
+                                    <br />
+
+
+                                    <a href="/Services/DigitalSolutions/" class="button">Know More</a>
+
+
+                                    <!-- </ul> -->
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </section>
+                    <!-- HOME SLIDER 4 -->
+                    <section class="swiper-slide">
+                        <div class="home__content1 grid1">
+
+                            <div class="home__group1">
+                                <img src="assets/img/home0-img2.png" alt="" class="home__img1    ">
+
+                            </div>
+
+                            <div class="home__data1">
+                                <h1 class="home__title1">DigiPass</h1>
+                                <h1>(Visitor Management System)</h1>
+                                <p class="home__description1" style="margin-top: 4%;">
+
+                                    <!-- <ul class="listt">
+                    
+                                                        <li><a href="/Services/DigiPass/" class="footer__link">
+                                                             -->
+                                    Our visitor management system is designed to make the check-in process simple and
+                                    secure. With our QR code-based system, visitors can check-in quickly and easily, and
+                                    you can manage and track all visitors seamlessly.</a></li>
+                                    <!-- </ul> -->
+
+                                    <br />
+
+                                    <br />
+
+
+                                    <a href="/Services/DigiPass/" class="button">Know More</a>
+
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- HOME SLIDER 5 -->
+                    <section class="swiper-slide">
+                        <div class="home__content1 grid1">
+
+                            <div class="home__group1">
+                                <img src="assets/img/home4-img1.png" alt="" class="home__img1    ">
+
+                            </div>
+
+                            <div class="home__data1">
+                                <h1 class="home__title1">CORPORATE GIFTING</h1>
+                                <p class="home__description1">
+                                    <!-- 
+                            <ul class="listt">
+
+                                <li><a href="/Services/CorporateGifting/#EmployeeKits"
+                                    class="footer__link"> -->
+
+                                    Make your business associates feel valued by delighting them with a customized token
+                                    of appreciation. Choose the perfect corporate gift from the best collection in
+                                    various categories.</a></li>
+
+                                    <br />
+
+                                    <br />
+
+
+
+                                    <a href="/Services/CorporateGifting/" class="button">Know More</a>
+
+
+                                    <!-- </ul> -->
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+
+
+                <!-- for auto slide -->
+                <div class="swiper-button-prev" style="display: none;"></div>
+                <div class="swiper-button-next" style="display: none;"></div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- code for automatic sliding effect -->
+        <script>
+
+            var but = document.querySelector(".swiper-button-next");
+            setInterval(function () { but.click(); }, 7000);
+
+        </script>
+
+        <!--==================== ABOUT Fedicoms ====================-->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <h2 class="section__title about__title">About Us</h2>
+                    <p class="about__description">Founded in 2021, Fedicoms has evolved from a customer engagement
+                        service provider to a SAAS provider and
+                        evolved in various business generes like Customer engagements, Loyalty, Digital Offerings,
+                        Gamification and more. Today, we help our clients get intimately familiar with their customer
+                        data to increase profitability from our solutions. Our mission is to empower brands we work with
+                        to retain more customers by creating lifelong relationships built on more emotional,
+                        personalized
+                        experiences. With more than over two decade of experience in the industry our leadership team
+                        ensure we’ve
+                        built the most robust customer experience platform through our product offerings.
+                    </p>
+                    <a href="/About/" class="button">Know More</a>
+
+                </div>
+
+                <div class="about__img">
+                    <div class="about__img-overlay">
+                        <img src="assets/img/about1.png" alt="" class="about__img-one">
+                    </div>
+
+                    <div class="about__img-overlay">
+                        <img src="assets/img/about2.png" alt="" class="about__img-two">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <!--==================== FEATURED ====================-->
+        <section class="featured section2 container2" id="featured" style="Display:none;">
+            <h2 class="section__title">Our Services</h2>
+
+            <div class="featured__container grid2" style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: self-start;
+        ">
+                <article class="featured__card">
+                    <span class="featured__tag">8 +</span>
+
+                    <img src="assets/img/home1-img.png" alt="" class="featured__img">
+
+                    <div class="featured__data">
+                        <h3 class="featured__title">Customer Engagement</h3>
+                        <!-- <span class="featured__price">$1050</span> -->
+                    </div>
+                    <a href="/Services/CampaignManagement/">
+                        <button class="button featured__button">Know more</button>
+                    </a>
+                </article>
+
+                <article class="featured__card">
+                    <span class="featured__tag">5 +</span>
+
+                    <img src="assets/img/home2-img.png" alt="" class="featured__img">
+
+                    <div class="featured__data">
+                        <h3 class="featured__title">Loyalty Solutions</h3>
+                        <!-- <span class="featured__price">$250</span> -->
+                    </div>
+                    <a href="/Services/LoyaltySolutions/">
+                        <button class="button featured__button">Know more</button>
+                    </a>
+                </article>
+
+                <article class="featured__card">
+                    <span class="featured__tag">5 +</span>
+
+                    <img src="assets/img/home3-img.png" alt="" class="featured__img">
+
+                    <div class="featured__data">
+                        <h3 class="featured__title">Digital Solutions</h3>
+                        <!-- <span class="featured__price">$890</span> -->
+                    </div>
+                    <a href="/Services/DigitalSolutions/">
+                        <button class="button featured__button">Know more</button>
+                    </a>
+                </article>
+
+                <article class="featured__card">
+                    <span class="featured__tag">5 +</span>
+
+                    <img src="assets/img/home0-img1.png" alt="" class="featured__img">
+
+                    <div class="featured__data">
+                        <h3 class="featured__title">DigiPass</h3>
+                        <!-- <span class="featured__price">$890</span> -->
+                    </div>
+                    <a href="/Services/DigiPass/">
+                        <button class="button featured__button">Know more</button>
+                    </a>
+                </article>
+
+
+                <article class="featured__card">
+                    <span class="featured__tag">5 +</span>
+
+                    <img src="assets/img/home4-img.png" alt="" class="featured__img">
+
+                    <div class="featured__data">
+                        <h3 class="featured__title">Corporate Gifting</h3>
+                        <!-- <span class="featured__price">$890</span> -->
+                    </div>
+                    <a href="/Services/CorporateGifting/">
+                        <button class="button featured__button">Know more</button>
+                    </a>
+                </article>
+
+
+            </div>
+        </section>
+
+
+
+
+
+
+        <!--==================== VIDEO ====================-->
+        <section class="video section" style="display:none;">
+            <h2 class="section__title">Video Tour</h2>
+
+            <div class="video__container container">
+                <p class="video__description">Find out more with our video of the most beautiful and
+                    pleasant places for you and your family.
+                </p>
+
+                <div class="video__content">
+                    <video id="video-file">
+                        <source src="assets/video/video.mp4" type="video/mp4">
+                    </video>
+
+                    <button class="button button--flex video__button" id="video-button">
+                        <i class="ri-play-line video__button-icon" id="video-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--==================== contact us ====================-->
+        <section class="subscribe section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h2 class="section__title subscribe__title">Feel Free To <br> Connect with us</h2>
+                    <p class="subscribe__description">
+                        Any kind of Business Solution or Consultation, Don’t Hesitate to Contact With Us...
+                    </p>
+
+                    <div class="subscribe__form" style="    justify-content: center; background-color: transparent;">
+                        <a href="/Contact/">
+                            <button class="button" style="border: 4px solid white;">
+                                Contact Us
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+        <!--+++++++++++++++++++++++++++++++++++our partners++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <section>
+            <br>
+            <br>
+            <div style="height:300px">
+                <h1 style="text-align: center;">We Are Proud To Partner With:</h1>
+                <marquee style="margin-top:6%;">
+                    <img src="assets/img/partner1.png" alt="1mg" class="featured__img">
+                    <img src="assets/img/partner2.png" alt="tata fiber" class="featured__img">
+                    <img src="assets/img/partner3.png" alt="venus" class="featured__img">
+                    <img src="assets/img/partner4.png" alt="sgs" class="featured__img">
+                    <img src="assets/img/partner5.png" alt="fever" class="featured__img">
+                    <img src="assets/img/partner6.png" alt="myTeam" class="featured__img">
+                    <img src="assets/img/partner7.png" alt="prakash" class="featured__img">
+                    <img src="assets/img/partner8.png" alt="Deam info" class="featured__img">
+                </marquee>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__content grid">
+                    <div class="footer__data">
+                        <h3 class="footer__title">Fedicoms</h3>
+                        <p class="footer__description">a strategic partner to enterprise &#38; mid-size companies
+                            across industries.
+                        </p>
+                        <div>
+                            <a href="https://www.facebook.com/people/Fedicoms-Pvt-Ltd/100088110609713/" target="_blank"
+                                class="footer__social">
+                                <i class="ri-facebook-box-fill"></i>
+                            </a>
+                            <a href="https://twitter.com/FedicomsLtd" target="_blank" class="footer__social">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/fedicoms/" target="_blank" class="footer__social">
+                                <i class="ri-instagram-fill"></i>
+                            <a href="https://www.linkedin.com/company/fedicoms-pvt-ltd/" target="_blank"
+                                class="footer__social">
+                                <i class="ri-linkedin-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Quick Links</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link"><i class="ri-links-line"></i> Home</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="/About/" class="footer__link"><i class="ri-links-line"></i> About Us</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="/Career/" class="footer__link"><i class="ri-links-line"></i> Career</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="../Contact/" class="footer__link"><i class="ri-links-line"></i> Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Services</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="/Services/CampaignManagement/" class="footer__link"><i
+                                        class="ri-24-hours-line"></i> Customer Engagement</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="/Services/LoyaltySolutions/" class="footer__link"><i
+                                        class="ri-24-hours-line"></i> Loyalty Solutions</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="/Services/DigitalSolutions/" class="footer__link"><i
+                                        class="ri-24-hours-line"></i> Digital Solutions</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="../Services/DigiPass/" class="footer__link"><i
+                                        class="ri-24-hours-line"></i>DigiPass - VMS</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="../Services/CorporateGifting/" class="footer__link"><i
+                                        class="ri-24-hours-line"></i>Corporate Gifting</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Contact</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a class="footer__link Click-here"><i class="ri-map-pin-line"></i> 10/5, FF, Ashok
+                                    Nagar</a>
+                            </li>
+                            <li class="footer__item">
+                                <a class="footer__link Click-here">&nbsp; &nbsp; &nbsp; New Delhi 110018</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="mailto:info@fedicoms.com" class="footer__link"><i
+                                        class="ri-mail-send-line"></i> info@fedicoms.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer__rights">
+                    <p class="footer__copy">&#169; 2023 Fedicoms. All rigths reserved.</p>
+                    <div class="footer__terms">
+                        <a href="#" class="footer__terms-link">Terms &#38; Agreements</a>
+                        <a href="#" class="footer__terms-link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+        <!-- google maps popup container start -->
+
+        <div class="custom-model-main">
+            <div class="custom-model-inner">
+                <div class="close-btn"><i class="ri-close-line"></i></div>
+                <div class="custom-model-wrap">
+                    <div class="pop-up-content-wrap">
+
+
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2146.5833915160565!2d77.10005330837016!3d28.637536664250476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d049fcf51d25f%3A0xc2107883da8991cb!2sFedicoms!5e0!3m2!1sen!2sin!4v1676028182220!5m2!1sen!2sin"
+                            width="100%" height="420px" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg-overlay"></div>
+        </div>
+
+        <script>
+
+
+            $(".Click-here").on('click', function () {
+                $(".custom-model-main").addClass('model-open');
+            });
+            $(".close-btn, .bg-overlay").click(function () {
+                $(".custom-model-main").removeClass('model-open');
+            });
+
+
+
+        </script>
+
+        <!-- google maps popup container complete -->
+
+
+
+
+
+
+
+
+
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-line scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL===============-->
+        <script src="assets/js/scrollreveal.min.js"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+
+
+
+        <!--++++++++++++++++++++++++++++++++++++++++++++++LAST BUTTON+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <div id="mybutton" style="bottom:10px;">
+
+            <a href="https://wa.me/919971422423?text=" class="button" style="display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 3px 9px;
+                background-color: aliceblue;
+                border: 2px solid green;
+            "><i class="fa fa-whatsapp" style="font-size:48px;color:rgb(40, 194, 58);"></i>
+                <p style="    color: green;
+                    margin-right: 5px;"> &nbsp; Chat With Us</p>
+            </a>
+
+        </div>
+        <style>
+            .feedback {
+                background-color: white;
+                color: rgb(255, 255, 255);
+                padding: 10px 20px;
+                border-radius: 4px;
+                border-color: #46b8da;
+            }
+
+            #mybutton {
+                position: fixed;
+                bottom: -4px;
+                right: 10px;
+            }
+        </style>
+</body>
+
+</html>
+
+<!--+++++++++++++++++++++++++++Code is Written By SARANG KUMAR SOIN+++++++++++++++++++++++++++++-->
+<!--============================https://sarangsoin.netlify.app ================================-->

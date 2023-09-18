@@ -1,0 +1,458 @@
+<!-- ======================= FAQ Section start ============================== -->
+           <!--=======================================================flow of digipass==================================-->
+           <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data" style="text-align:left;">
+                    <h2 class="section__title about__title"><b> User Side Features
+                            of DigiPass</b></h2>
+                    
+                            <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                            <h3 onclick="FAQone()" id="fq1" style="cursor: pointer;">QR Based Check-in & Check-out's
+                    </h3>
+                    <div id="fqicn1">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq1" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="secondImage()" id="fq2" style="cursor: pointer;">1. Register your Valid Number
+                    </h3>
+                    <div id="fqicn2">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq2" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQthree()" id="fq3" style="cursor: pointer;">2. Enter Your OTP
+                    </h3>
+                    <div id="fqicn3">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq3" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQfour()" id="fq4" style="cursor: pointer;">3. Write your Detail's
+                    </h3>
+                    <div id="fqicn4">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq4" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQfive()" id="fq5" style="cursor: pointer;">4. Click your Image
+                    </h3>
+                    <div id="fqicn5">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq5" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQsix()" id="fq6" style="cursor: pointer;">5. Upload Your Id
+                    </h3>
+                    <div id="fqicn6">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq6" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQseven()" id="fq7" style="cursor: pointer;">6. Your Health Detail's
+                    </h3>
+                    <div id="fqicn7">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq7" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQeight()" id="fq8" style="cursor: pointer;">7. Pass Generated
+                    </h3>
+                    <div id="fqicn8">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq8" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    
+                    <div style="    display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+flex-wrap: nowrap;">
+                    <h3 onclick="FAQnine()" id="fq9" style="cursor: pointer;">8. Agreed With Conditions
+                    </h3>
+                    <div id="fqicn9">
+                    <i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>
+                </div>    
+                </div>
+                    
+                    <p id="faq9" style="
+                    background-color: rgb(24 57 134);"></p><br>
+                    <!-- <a href="/About/" class="button">Know More</a> -->
+                </div>
+
+                <script>
+                    var image = document.querySelector('#image'); 
+                    var text = document.querySelector('#Text'); 
+                    function FAQone() { 
+                        document.getElementById("faq1").innerHTML = "Ram Ram "; 
+                        document.getElementById("faq1").style.color = 'white';
+                        document.getElementById("faq1").style.borderRadius = '5px';
+                        document.getElementById("faq1").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq1").style.marginLeft = '20px';
+                        document.getElementById("faq1").style.marginTop = '5px';
+                        
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+
+                         
+                    }
+                    function secondImage() { 
+                        document.getElementById("faq2").innerHTML = "Radhy Radhy"; 
+                        document.getElementById("faq2").style.color = 'white';
+                        document.getElementById("faq2").style.borderRadius = '5px';
+                        document.getElementById("faq2").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq2").style.marginLeft = '20px';
+                        document.getElementById("faq2").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                        
+                        
+                         
+                    } 
+                    function FAQthree() { 
+                        document.getElementById("faq3").innerHTML = "Jai "; 
+                        document.getElementById("faq3").style.color = 'white';
+                        document.getElementById("faq3").style.borderRadius = '5px';
+                        document.getElementById("faq3").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq3").style.marginLeft = '20px';
+                        document.getElementById("faq3").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                        
+                         
+                    } 
+                    function FAQfour() { 
+                        document.getElementById("faq4").innerHTML = "Ram"; 
+                        document.getElementById("faq4").style.color = 'white';
+                        document.getElementById("faq4").style.borderRadius = '5px';
+                        document.getElementById("faq4").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq4").style.marginLeft = '20px';
+                        document.getElementById("faq4").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                        
+                         
+                    } 
+                    function FAQfive() { 
+                        document.getElementById("faq5").innerHTML = "ji"; 
+                        document.getElementById("faq5").style.color = 'white';
+                        document.getElementById("faq5").style.borderRadius = '5px';
+                        document.getElementById("faq5").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq5").style.marginLeft = '20px';
+                        document.getElementById("faq5").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                         
+                    } 
+                    function FAQsix() { 
+                        document.getElementById("faq6").innerHTML = "ki"; 
+                        document.getElementById("faq6").style.color = 'white';
+                        document.getElementById("faq6").style.borderRadius = '5px';
+                        document.getElementById("faq6").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq6").style.marginLeft = '20px';
+                        document.getElementById("faq6").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                         
+                    } 
+                    function FAQseven() { 
+                        document.getElementById("faq7").innerHTML = "sita "; 
+                        document.getElementById("faq7").style.color = 'white';
+                        document.getElementById("faq7").style.borderRadius = '5px';
+                        document.getElementById("faq7").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq7").style.marginLeft = '20px';
+                        document.getElementById("faq7").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                         
+                    } 
+                    function FAQeight() { 
+                        document.getElementById("faq8").innerHTML = "ram"; 
+                        document.getElementById("faq8").style.color = 'white';
+                        document.getElementById("faq8").style.borderRadius = '5px';
+                        document.getElementById("faq8").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq8").style.marginLeft = '20px';
+                        document.getElementById("faq8").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq9").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                         
+                    } 
+                    function FAQnine() { 
+                        document.getElementById("faq9").innerHTML = "jai hanuman"; 
+                        document.getElementById("faq9").style.color = 'white';
+                        document.getElementById("faq9").style.borderRadius = '5px';
+                        document.getElementById("faq9").style.padding = '2px 10px 5px 10px';
+                        document.getElementById("faq9").style.marginLeft = '20px';
+                        document.getElementById("faq9").style.marginTop = '5px';
+                        
+                        document.getElementById("faq1").style.display = 'none';
+                        document.getElementById("faq2").style.display = 'none';
+                        document.getElementById("faq3").style.display = 'none';
+                        document.getElementById("faq4").style.display = 'none';
+                        document.getElementById("faq5").style.display = 'none';
+                        document.getElementById("faq6").style.display = 'none';
+                        document.getElementById("faq7").style.display = 'none';
+                        document.getElementById("faq8").style.display = 'none';
+                        
+                        document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn2").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn3").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn4").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn5").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn6").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn7").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn8").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+                        document.getElementById("fqicn9").innerHTML='<i class="ri-arrow-up-s-fill" style="font-size:xx-large"></i>';
+
+                    }
+                </script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                <script>
+
+                    document.getElementById("fq1").click(); 
+                    document.getElementById("faq1").style.display = 'none'; 
+                    document.getElementById("fqicn1").innerHTML='<i class="ri-arrow-down-s-fill" style="font-size:xx-large"></i>';
+
+
+
+                    $(document).ready(function () { $("#fq1").click(function () { $("#faq1").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq2").click(function () { $("#faq2").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq3").click(function () { $("#faq3").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq4").click(function () { $("#faq4").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq5").click(function () { $("#faq5").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq6").click(function () { $("#faq6").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq7").click(function () { $("#faq7").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq8").click(function () { $("#faq8").toggle(); }); }); 
+                    $(document).ready(function () { $("#fq9").click(function () { $("#faq9").toggle(); }); });
+                </script>
+
+            </div>
+        </section>
+
+        <!-- ====================== FAQ Section Complete =========================== -->
+
