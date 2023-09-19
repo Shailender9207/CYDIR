@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 
 
-    <title>UCTPL</title>
+    <title>Fedicoms</title>
 
 
 
@@ -163,6 +163,7 @@
         }
     </style>
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <!-- completed dependencies container for google maps popup from footer -->
@@ -171,12 +172,60 @@
 
 
 
+    <style>
+        :root {
+            --rot-col-0: #a6cce4;
+            --rot-col-1: #c3c9db;
+            --rot-col-2: #c6cae6;
+            --rot-col-3: #c8dde6;
+            --rot-col-4: #bcc6e7;
+        }
+
+        body.dark-theme {
+            --rot-col-0: #005c94;
+            --rot-col-1: #8f4d4d;
+            --rot-col-2: #363d73;
+            --rot-col-3: #685c5c;
+            --rot-col-4: #3a6e80;
+
+        }
+
+
+        .gears-d3-canvas svg {
+            max-width: 100%;
+            max-height: 768px;
+        }
+
+        .style-0 path {
+            fill: var(--rot-col-0);
+        }
+
+        .style-1 path {
+            fill: var(--rot-col-1);
+        }
+
+        .style-2 path {
+            fill: var(--rot-col-2);
+        }
+
+        .style-3 path {
+            fill: var(--rot-col-3);
+        }
+
+        .style-4 path {
+            fill: var(--rot-col-4);
+        }
+    </style>
 
 
 
 
-
-
+    <!-- <link rel="stylesheet" href="./assets/js/gear-toy.css"> -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
+    <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script> -->
+    <script type="text/javascript" src="./assets/js/gears.d3.js"></script>
+    <!-- <script type="text/javascript" src="./assets/js/gear-toy.js"></script> -->
 
 </head>
 
@@ -187,18 +236,47 @@
 
 
 
+<div class="aboveHeader" style="
+display: flex;
+flex-direction: row;
+align-items: center;
+flex-wrap: wrap;
+justify-content: center;
+">
+
+    <div class="logoo__container">
+        
+        <img src="./assets/img/unicom_log.jpg" style="width:180px; height:60px; border-radius: 0px !important;">
+        <!-- <a href="#" class="nav__logo"> </a>     -->
+        
+    </div>
+
+    <div class="cert__container" style="padding:15px">
+
+        <h2 style="text-align: center;">
+            UNITED COMPONENTS AND TOOLS PRIVATE LIMITED
+        </h2>
+        
+        <p style="text-align: center;">
+            An IATF 16949:2016 and 9001:2015 Certified Company             
+        </p>
+        
+    </div>
+
+
+</div>
 
 
 
 
 
+    <header class="header" id="header" style="position: sticky !important; border-radius:0px;   color:#5FA5C8 !important;">
+        
 
-    <header class="header" id="header">
         <nav class="nav container">
-            <div class="logo__container">
 
-                <img src="../../assets/img/logoSmall.png" style="width:12%; border-radius: 0px !important;">
-                <a href="#" class="nav__logo"> &nbsp; FEDICOMS</a>
+            <div class="logo__container">
+<!-- placeholder -->
             </div>
 
 
@@ -252,88 +330,158 @@
         <!--==================== HOME ====================-->
         <section class="home" id="home" class="home1 container1" id="home1" style="padding: 15px !important; ">
 
+
             <!-- starting division for home background effect or image -->
-            <div src="#" alt="#" class="home__img">
+
+            <div class="container gears-d3-canvas" style="            position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    
+    left: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+
+    "></div>
+
+            <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
 
 
-                <div id="particles" style="width: auto; height:100%;"></div>
+            <script>
 
-                <!--Sources to use js libraries-->
-                <script src="assets/js/particles.min.js"></script>
-                <!-- <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
-                <!-- <script src="/scripts.js"></script> -->
+                /**
+                * gear-toy.js
+                * http://brm.io/gears-d3-js/
+                * License: MIT
+                */
 
+                var _svg,
+                    _allGears = [],
+                    _randomiseInterval,
+                    _canvasWidth = 1280,
+                    _canvasHeight = 768,
+                    _xOffset = _canvasWidth * 0.5,
+                    _yOffset = _canvasHeight * 0.4,
+                    _gearFactors = [64, 64, 32, 48, 48, 96, 112, 256],
+                    _gearStyles = ['style-0', 'style-1', 'style-2', 'style-3', 'style-4'],
+                    _autoShuffle = true;
 
+                var _options = {
+                    radius: 16,
+                    holeRadius: 0.4,
+                    transition: true,
+                    speed: 0.01,
+                    autoShuffle: true,
+                    number: 20,
+                    addendum: 8,
+                    dedendum: 3,
+                    thickness: 0.7,
+                    profileSlope: 0.5
+                };
 
+                var main = function () {
 
+                    // set up our d3 svg element
+                    _svg = d3.select('.gears-d3-canvas')
+                        .append('svg')
+                        .attr('viewBox', '0 0 ' + _canvasWidth + ' ' + _canvasHeight)
+                        .attr('preserveAspectRatio', 'xMinYMin slice');
 
-                <script>
+                    // generate and randomise scene
+                    _generateScene(_options);
+                    _randomiseScene(false);
 
-                    let nrOfParticles = 100
-                    let densityOfParticles = 700
-                    let lineColor = "45B0FF"
-                    let lineWidth = 0.5
-                    let movementSpeed = 4
+                    // start a timer to randomise every few secs
+                    _randomiseInterval = setInterval(function () {
+                        if (_autoShuffle)
+                            _randomiseScene(true);
+                    }, 4000);
 
-                    particlesJS("particles", {
-                        particles: {
-                            number: { value: nrOfParticles, density: { enable: true, value_area: densityOfParticles } },
-                            size: { value: 0 },
-                            line_linked: {
-                                enable: true,
-                                distance: 250,
-                                color: lineColor,
-                                opacity: 1,
-                                width: lineWidth
-                            },
-                            move: {
-                                enable: true,
-                                speed: movementSpeed,
-                                direction: "right",
-                                random: true,
-                                straight: true,
-                                out_mode: "out",
-                                bounce: false,
-                                attract: { enable: false, rotateX: 600, rotateY: 1200 }
-                            }
-                        },
-                        interactivity: {
-                            detect_on: "canvas",
-                            events: {
-                                onhover: { enable: true, mode: "grab" },
-                                onclick: { enable: true, mode: "push" },
-                                resize: true
-                            },
-                            modes: {
-                                grab: { distance: 400, line_linked: { opacity: 1 } },
-                                bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-                                repulse: { distance: 200, duration: 0.4 },
-                                push: { particles_nb: 4 },
-                                remove: { particles_nb: 2 }
-                            }
-                        },
-                        retina_detect: true
+                    setTimeout(function () {
+                        _randomiseScene(true);
+                    }, 100);
+
+                    // start the d3 animation timer
+                    d3.timer(function () {
+                        _svg.selectAll('.gear-path')
+                            .attr('transform', function (d) {
+                                d.angle += d.speed;
+                                return 'rotate(' + d.angle * (180 / Math.PI) + ')';
+                            });
                     });
-                    var count_particles, stats, update;
+                };
 
-                    document.body.appendChild(stats.domElement);
-                    count_particles = document.querySelector(".js-count-particles");
-                    update = function () {
-                        stats.begin();
-                        stats.end();
-                        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-                            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-                        }
-                        requestAnimationFrame(update);
-                    };
-                    requestAnimationFrame(update);
+                var _generateScene = function (options) {
+                    var holeRadius,
+                        teeth,
+                        radius,
+                        factor,
+                        newGear,
+                        innerRadius;
 
-                </script>
+                    _gearStyles = Gear.Utility.arrayShuffle(_gearStyles);
 
+                    for (var i = 0; i < options.number; i++) {
+                        factor = _gearFactors[i % _gearFactors.length];
+                        radius = factor / 2;
+                        teeth = radius / 4;
+                        innerRadius = radius - options.addendum - options.dedendum;
+                        holeRadius = factor > 96 ? innerRadius * 0.5 + innerRadius * 0.5 * options.holeRadius : innerRadius * options.holeRadius;
 
+                        _allGears.push(newGear = Gear.create(_svg, {
+                            radius: radius,
+                            teeth: teeth,
+                            x: 0,
+                            y: 0,
+                            holeRadius: holeRadius,
+                            addendum: options.addendum,
+                            dedendum: options.dedendum,
+                            thickness: options.thickness,
+                            profileSlope: options.profileSlope
+                        }));
 
-            </div>
+                        newGear.classed(_gearStyles[i % _gearStyles.length], true);
+                    }
+                };
+
+                var _randomiseScene = function (transition) {
+                    _allGears = Gear.Utility.arrayShuffle(_allGears);
+                    Gear.randomArrange(_allGears, _xOffset, _yOffset);
+                    Gear.setPower(_allGears[0], 0.01);
+                    Gear.updateGears(_allGears);
+
+                    _svg.selectAll('.gear')
+                        .each(function (d, i) {
+                            if (transition) {
+                                d3.select(this)
+                                    .transition()
+                                    .ease('elastic')
+                                    .delay(i * 80 + Math.random() * 80)
+                                    .duration(1500)
+                                    .attr('transform', function (d) {
+                                        return 'translate(' + [d.x, d.y] + ')';
+                                    });
+                            } else {
+                                d3.select(this)
+                                    .attr('transform', function (d) {
+                                        return 'translate(' + [d.x, d.y] + ')';
+                                    });
+                            }
+                        });
+                };
+
+                main();
+
+            </script>
+
             <!-- closing of division for home background effect and image -->
+
+
+
+
+
 
             <div class="swiper home-swiper">
                 <div class="swiper-wrapper">
@@ -348,14 +496,15 @@
                     <section class="swiper-slide">
                         <div class="home__content1 grid1">
 
-                            <div class="home__group1">
-                                <img src="assets/img/home1-img.png" alt="" class="home__img1">
+                                                        <div class="home__group1">
+                                <img src="./assets/img/unicom_banner1.jpg" alt="" class="home__img1">
 
                             </div>
 
                             <div class="home__data1">
-                                <h1 class="home__title1">CUSTOMER ENGAGEMENT</h1>
-                                <p class="home__description1">
+                                <h1 class="home__title1" style="margin-top: 50px;">UNITED COMPONENTS & TOOLS PVT. LTD
+                                </h1>
+                                <!-- <p class="home__description1">
                                     Engage deeper with your customers across any preferred communication channels and
                                     Expand opportunities with Fedicoms Mobile’s Communication APIs and Omni-channel
                                     Solutions to deliver exceptional customer experience. Use our simplified
@@ -372,9 +521,14 @@
 
 
 
-                                </p>
+                                </p> -->
 
                             </div>
+
+
+
+
+
                         </div>
                     </section>
 
@@ -382,39 +536,49 @@
                     <section class="swiper-slide">
                         <div class="home__content1 grid1">
 
-                            <div class="home__group1">
-                                <img src="assets/img/home2-img.png" alt="" class="home__img1    ">
+                                                        <div class="home__group1">
+                                <img src="./assets/img/unicom_banner2.jpg" alt="" class="home__img1    ">
 
                             </div>
 
                             <div class="home__data1">
-                                <h1 class="home__title1">LOYALTY SOLUTIONS</h1>
+                                <h1 class="home__title1" style="margin-top: 50px;"> FACILITIES AVAILABLE </h1>
                                 <p class="home__description1">
 
-                                    <!-- <ul class="listt">
+                                <ul class="listt">
+                                    <li>
+                                        Research and Development
+                                    </li>
+                                    <li>
+                                        Tool Room
+                                    </li>
+                                    <li>
+                                        Press Shop
+                                    </li>
+                                    <li>
+                                        Welding and Tapping
+                                    </li>
+                                    <li>
+                                        Inspection and Testing
+                                    </li>
+
+                                </ul>
+                                <br />
+
+                                <br />
 
 
-                                    <li><a href="/Services/LoyaltySolutions/#consumerLoyalty"
-                                            class="footer__link"> -->
+                                <!-- <a href="/Services/LoyaltySolutions/" class="button">Know More</a> -->
 
 
-                                    We design loyalty solutions for the Trade/channel Partners, Consumers, emplyees
-                                    along with referal programs and contests to increase sales and enhance customer
-                                    stickness with brands. </a></li>
-
-                                    <br />
-
-                                    <br />
-
-
-                                    <a href="/Services/LoyaltySolutions/" class="button">Know More</a>
-
-
-                                    <!-- </ul> -->
 
                                 </p>
 
                             </div>
+
+
+
+
                         </div>
                     </section>
 
@@ -422,127 +586,123 @@
                     <section class="swiper-slide">
                         <div class="home__content1 grid1">
 
-                            <div class="home__group1">
-                                <img src="assets/img/home3-img.png" alt="" class="home__img1    ">
+                                                        <div class="home__group1">
+                                <img src="./assets/img/unicom_product4.jpg" alt="" class="home__img1    ">
 
                             </div>
 
                             <div class="home__data1">
-                                <h1 class="home__title1">DIGITAL SOLUTIONS</h1>
+                                <h1 class="home__title1" style="margin-top: 50px;">PRODUCTS</h1>
                                 <p class="home__description1">
 
-                                    <!-- <ul class="listt">
+                                <ul class="listt">
 
-                                    <li><a href="/Services/DigitalSolutions/#Gamification"
-                                            class="footer__link"> -->
+                                    <li>
+                                        Automotive
 
-                                    Digital solutions have made it possible for businesses to rethink the way they can
-                                    tackle problems in simple, efficient, innovative and scalable ways. These digital
-                                    solutions and technologies can work together or apart, giving you the freedom to
-                                    pick and mix the right solutions to suit your needs. Our Digital solutions offerings
-                                    are more about digitalizing legacy processes revisiting customer experience and
-                                    reducing costs.</li>
+                                    </li>
+                                    <li>
+                                        Electrical
+                                    </li>
+                                    <li>
+
+                                        Home Appliances
+
+                                    </li>
 
                                     <br />
 
                                     <br />
 
 
-                                    <a href="/Services/DigitalSolutions/" class="button">Know More</a>
+                                    <!-- <a href="/Services/DigitalSolutions/" class="button">Know More</a> -->
 
 
-                                    <!-- </ul> -->
+                                </ul>
 
                                 </p>
 
                             </div>
+
+
+
+
+
                         </div>
                     </section>
                     <!-- HOME SLIDER 4 -->
                     <section class="swiper-slide">
                         <div class="home__content1 grid1">
 
-                            <div class="home__group1">
-                                <img src="assets/img/home0-img2.png" alt="" class="home__img1    ">
+                                                        <div class="home__group1">
+                                <img src="./assets/img/unicom_banner4.jpg" alt="" class="home__img1    ">
 
                             </div>
 
+
+
                             <div class="home__data1">
-                                <h1 class="home__title1">DigiPass</h1>
-                                <h1>(Visitor Management System)</h1>
+                                <h1 class="home__title1" style="margin-top: 50px;">CUSTOMERS</h1>
                                 <p class="home__description1" style="margin-top: 4%;">
 
-                                    <!-- <ul class="listt">
-                    
-                                                        <li><a href="/Services/DigiPass/" class="footer__link">
-                                                             -->
-                                    Our visitor management system is designed to make the check-in process simple and
-                                    secure. With our QR code-based system, visitors can check-in quickly and easily, and
-                                    you can manage and track all visitors seamlessly.</a></li>
-                                    <!-- </ul> -->
+                                <ul class="listt">
 
-                                    <br />
+                                    <li>
+                                        Controls and Switchgear (Noida )
+                                    </li>
+                                    <li>
+                                        Controls and Switchgear (NSEZ)
+                                    </li>
+                                    <li>
+                                        Minda Corporation Ltd (Pant nagar)
+                                    </li>
+                                    <li>
+                                        Minda Corporation Ltd (Noida)
+                                    </li>
+                                    <li>
+                                        Minda Industries Ltd (Manesar)
+                                    </li>
+                                    <li>
+                                        Minda Vast Access (Pune)
+                                    </li>
+                                    <li>
+                                        Elin Electronics Ltd. (Ghaziabad)
+                                    </li>
+                                    <li>
+                                        Vibracoustic (India)
+                                    </li>
 
-                                    <br />
+                                </ul>
+
+                                <br />
+
+                                <br />
 
 
-                                    <a href="/Services/DigiPass/" class="button">Know More</a>
+                                <!-- <a href="/Services/DigiPass/" class="button">Know More</a> -->
 
 
                                 </p>
 
                             </div>
+
+
+
+
                         </div>
                     </section>
 
-                    <!-- HOME SLIDER 5 -->
-                    <section class="swiper-slide">
-                        <div class="home__content1 grid1">
 
-                            <div class="home__group1">
-                                <img src="assets/img/home4-img1.png" alt="" class="home__img1    ">
-
-                            </div>
-
-                            <div class="home__data1">
-                                <h1 class="home__title1">CORPORATE GIFTING</h1>
-                                <p class="home__description1">
-                                    <!-- 
-                            <ul class="listt">
-
-                                <li><a href="/Services/CorporateGifting/#EmployeeKits"
-                                    class="footer__link"> -->
-
-                                    Make your business associates feel valued by delighting them with a customized token
-                                    of appreciation. Choose the perfect corporate gift from the best collection in
-                                    various categories.</a></li>
-
-                                    <br />
-
-                                    <br />
-
-
-
-                                    <a href="/Services/CorporateGifting/" class="button">Know More</a>
-
-
-                                    <!-- </ul> -->
-
-                                </p>
-
-                            </div>
-                        </div>
-                    </section>
 
 
 
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination" style="margin-top: 0px;"></div>
 
 
                 <!-- for auto slide -->
                 <div class="swiper-button-prev" style="display: none;"></div>
-                <div class="swiper-button-next" style="display: none;"></div>
+                <div class="swiper-button-next swiper-button-next1" style="display: none;"></div>
 
 
             </div>
@@ -553,40 +713,81 @@
         <!-- code for automatic sliding effect -->
         <script>
 
-            var but = document.querySelector(".swiper-button-next");
-            setInterval(function () { but.click(); }, 7000);
+            var but1 = document.querySelector(".swiper-button-next1");
+            setInterval(function () { console.log('1' + but1.click()); }, 5000);
 
         </script>
 
+
+
         <!--==================== ABOUT Fedicoms ====================-->
-        <section class="about section" id="about">
+
+
+        <div style="display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding-top:100px;">
+            <h2 class="section__title about__title">COMPANY PROFILE</h2>
+        </div>
+
+
+        <section class="about section" id="about" style="margin: 20px;     display: flex;
+        justify-content: center; padding-top:0px;">
+
             <div class="about__container container grid">
-                <div class="about__data">
-                    <h2 class="section__title about__title">About Us</h2>
-                    <p class="about__description">Founded in 2021, Fedicoms has evolved from a customer engagement
-                        service provider to a SAAS provider and
-                        evolved in various business generes like Customer engagements, Loyalty, Digital Offerings,
-                        Gamification and more. Today, we help our clients get intimately familiar with their customer
-                        data to increase profitability from our solutions. Our mission is to empower brands we work with
-                        to retain more customers by creating lifelong relationships built on more emotional,
-                        personalized
-                        experiences. With more than over two decade of experience in the industry our leadership team
-                        ensure we’ve
-                        built the most robust customer experience platform through our product offerings.
-                    </p>
+
+
+                <div class="about__img">
+
+
+                    <div class="about__img-overlay">
+                        <img src="./assets/img/unicom_cert1.jpg" alt="" class="about__img-two">
+                    </div>
+
+
+                    <div class="about__img-overlay">
+                        <img src="./assets/img/unicom_cert.jpg" alt="" class="about__img-one">
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="about__data" style="max-width: 720px;    display: flex;
+                justify-content: center; flex-direction: column;
+                align-items: center;">
+                    <div class="about__description" style="    text-align: justify;">
+                        <ul>
+                            <li style="margin-bottom: 10px;">
+                                M/s United Components and Tools Private Limited was established in January 2016 .
+                            </li>
+
+                            <li style="margin-bottom: 10px;">
+                                The Managing Director <b>Mr. Naresh Kumar Tyagi</b> is having over 30 years of
+                                experience in this field. The Executive Director <b>Mr. Ashish Tyagi</b> is having over
+                                10 years experience in design and development of sheet metal parts.
+                            </li>
+
+                            <li style="margin-bottom: 10px;">
+                                We at UCTPL manufacture automotive parts, electrical sheet metal parts and parts of
+                                various Home Appliances. We are catering to OEMs mainly.
+                            </li>
+
+                            <li style="margin-bottom: 10px;">
+                                UCTPL is having a of strength of 100 people including both technical and non technical
+                                employees.
+                            </li>
+                        </ul>
+
+
+                    </div>
+
                     <a href="/About/" class="button">Know More</a>
 
                 </div>
 
-                <div class="about__img">
-                    <div class="about__img-overlay">
-                        <img src="assets/img/about1.png" alt="" class="about__img-one">
-                    </div>
 
-                    <div class="about__img-overlay">
-                        <img src="assets/img/about2.png" alt="" class="about__img-two">
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -599,8 +800,8 @@
 
 
         <!--==================== FEATURED ====================-->
-        <section class="featured section2 container2" id="featured" style="Display:none;">
-            <h2 class="section__title">Our Services</h2>
+        <section class="featured section2 container2" id="featured" style="Display:block;">
+            <h2 class="section__title">Products</h2>
 
             <div class="featured__container grid2" style="
             display: flex;
@@ -609,13 +810,13 @@
             justify-content: center;
             align-items: self-start;
         ">
-                <article class="featured__card">
-                    <span class="featured__tag">8 +</span>
+                <article class="featured__card" style="    max-width: 320px;">
+                    <!-- <span class="featured__tag">8 +</span> -->
 
-                    <img src="assets/img/home1-img.png" alt="" class="featured__img">
+                    <img src="./assets/img/unicom_product1.jpg" alt="" class="featured__img">
 
                     <div class="featured__data">
-                        <h3 class="featured__title">Customer Engagement</h3>
+                        <h3 class="featured__title">Automotive</h3>
                         <!-- <span class="featured__price">$1050</span> -->
                     </div>
                     <a href="/Services/CampaignManagement/">
@@ -623,13 +824,13 @@
                     </a>
                 </article>
 
-                <article class="featured__card">
-                    <span class="featured__tag">5 +</span>
+                <article class="featured__card" style="    max-width: 320px;">
+                    <!-- <span class="featured__tag">5 +</span> -->
 
-                    <img src="assets/img/home2-img.png" alt="" class="featured__img">
+                    <img src="./assets/img/unicom_product2.jpg" alt="" class="featured__img">
 
                     <div class="featured__data">
-                        <h3 class="featured__title">Loyalty Solutions</h3>
+                        <h3 class="featured__title">Electrical</h3>
                         <!-- <span class="featured__price">$250</span> -->
                     </div>
                     <a href="/Services/LoyaltySolutions/">
@@ -637,13 +838,13 @@
                     </a>
                 </article>
 
-                <article class="featured__card">
-                    <span class="featured__tag">5 +</span>
+                <article class="featured__card" style="    max-width: 320px;">
+                    <!-- <span class="featured__tag">5 +</span> -->
 
-                    <img src="assets/img/home3-img.png" alt="" class="featured__img">
+                    <img src="./assets/img/unicom_product3.jpg" alt="" class="featured__img">
 
                     <div class="featured__data">
-                        <h3 class="featured__title">Digital Solutions</h3>
+                        <h3 class="featured__title">Home Appliances</h3>
                         <!-- <span class="featured__price">$890</span> -->
                     </div>
                     <a href="/Services/DigitalSolutions/">
@@ -651,38 +852,20 @@
                     </a>
                 </article>
 
-                <article class="featured__card">
-                    <span class="featured__tag">5 +</span>
-
-                    <img src="assets/img/home0-img1.png" alt="" class="featured__img">
-
-                    <div class="featured__data">
-                        <h3 class="featured__title">DigiPass</h3>
-                        <!-- <span class="featured__price">$890</span> -->
-                    </div>
-                    <a href="/Services/DigiPass/">
-                        <button class="button featured__button">Know more</button>
-                    </a>
-                </article>
-
-
-                <article class="featured__card">
-                    <span class="featured__tag">5 +</span>
-
-                    <img src="assets/img/home4-img.png" alt="" class="featured__img">
-
-                    <div class="featured__data">
-                        <h3 class="featured__title">Corporate Gifting</h3>
-                        <!-- <span class="featured__price">$890</span> -->
-                    </div>
-                    <a href="/Services/CorporateGifting/">
-                        <button class="button featured__button">Know more</button>
-                    </a>
-                </article>
-
 
             </div>
         </section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -709,6 +892,353 @@
                 </div>
             </div>
         </section>
+
+
+
+
+
+
+
+
+        <br />
+
+
+        <br />
+
+
+        <br />
+
+
+        <br />
+
+
+
+        <!-- start of facility image colleage -->
+
+
+        <section class="subscribe section">
+            <h2 class="section__title">FACILITIES AVAILABLE</h2>
+
+            <br>
+
+            <br />
+
+
+            <div style="display: flex;     justify-content: space-evenly; flex-wrap:wrap;">
+
+
+                <div class="pparentt" style="max-width: 500px; overflow:hidden;">
+
+<style>
+
+    .pparentt > *{
+
+max-width: 500px;
+
+    }
+
+</style>
+
+                    <div class="swiper home-swiper">
+                        <div class="swiper-wrapper">
+
+
+
+
+
+
+
+                            <!-- HOME SLIDER 1 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility1.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1">
+
+                                </div>
+
+
+                                <!-- </div> -->
+                            </section>
+
+                            <!-- HOME SLIDER 2 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility2.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1    ">
+
+                                </div>
+
+
+                                <!-- </div> -->
+                            </section>
+
+                            <!-- HOME SLIDER 3 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility3.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1    ">
+
+                                </div>
+
+
+                                <!-- </div> -->
+                            </section>
+                            <!-- HOME SLIDER 4 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility4.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1    ">
+
+                                </div>
+
+                                <!-- </div> -->
+                            </section>
+                            <!-- HOME SLIDER 5 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility5.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1    ">
+
+                                </div>
+
+                                <!-- </div> -->
+                            </section>
+                            <!-- HOME SLIDER 6 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility6.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1    ">
+
+                                </div>
+
+                                <!-- </div> -->
+                            </section>
+                            <!-- HOME SLIDER 7 -->
+                            <section class="swiper-slide">
+                                <!-- <div class="home__content1 grid1"> -->
+
+                                <div class="home__group1">
+                                    <img src="./assets/img/unicom_facility7.jpg" style="max-width: 540px;" alt=""
+                                        class="home__img1    ">
+
+                                </div>
+
+                                <!-- </div> -->
+                            </section>
+
+
+
+
+
+                        </div>
+                        <div class="swiper-pagination" style="margin-top: 0px;"></div>
+
+
+                        <!-- for auto slide -->
+                        <div class="swiper-button-prev" style="display: none;"></div>
+                        <div class="swiper-button-next swiper-button-next2" style="display: none;"></div>
+
+
+                    </div>
+
+                    </div>
+
+
+                    <div style="max-width: 500px; width:360px;">
+
+                        <p class="home__description1">
+
+                            <ul class="listt">
+                                <li>
+                                    Research and Development
+                                </li>
+                                <li>
+                                    Tool Room
+                                </li>
+                                <li>
+                                    Press Shop
+                                </li>
+                                <li>
+                                    Welding and Tapping
+                                </li>
+                                <li>
+                                    Inspection and Testing
+                                </li>
+
+                            </ul>
+                            <br />
+
+                            <br />
+
+
+                            <!-- <a href="/Services/LoyaltySolutions/" class="button">Know More</a> -->
+
+
+
+                            </p>
+
+                    </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- code for automatic sliding effect -->
+        <script>
+
+            var but2 = document.querySelector(".swiper-button-next2");
+            setInterval(function () { console.log('2' + but2.click()); }, 2000);
+
+        </script>
+
+        </div>
+        </div>
+        </section>
+
+        <!-- code for corausel of facility images -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--==================== AWARDS & CERTIFICATIONS ====================-->
+        <section class="featured section2 container2" id="featured" style="Display:block;">
+            <h2 class="section__title">AWARDS & CERTIFICATIONS</h2>
+
+            <div class="featured__container grid2" style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: self-start;
+        ">
+                <article style="position: relative;
+    text-align: center;
+    background-color: var(--container-color);
+    padding: 2rem 2rem 0rem 2rem;
+    border: 1px solid var(--border-color);
+    overflow-y: hidden;
+    transition: 0.3s;
+    box-shadow: rgb(26 102 124 / 40%) -2px 0px 20px 0px;
+" style="    max-width: 320px;">
+                    <!-- <span class="featured__tag">8 +</span> -->
+
+                    <img src="./assets/img/unicom_cert.jpg" alt="" class="featured__img">
+
+                    <!-- <div class="featured__data">
+                        <h3 class="featured__title">Automotive</h3>
+                        <span class="featured__price">$1050</span>
+                    </div> -->
+                    <!-- <a href="/Services/CampaignManagement/">
+                        <button class="button featured__button">Know more</button>
+                    </a> -->
+                </article>
+
+                <article style="position: relative;
+    text-align: center;
+    background-color: var(--container-color);
+    padding: 2rem 2rem 0rem 2rem;
+    border: 1px solid var(--border-color);
+    overflow-y: hidden;
+    transition: 0.3s;
+    box-shadow: rgb(26 102 124 / 40%) -2px 0px 20px 0px;
+" style="    max-width: 320px;">
+                    <!-- <span class="featured__tag">5 +</span> -->
+
+                    <img src="./assets/img/unicom_cert1.jpg" alt="" class="featured__img">
+
+                    <!-- <div class="featured__data">
+                        <h3 class="featured__title">Electrical</h3>
+                        <span class="featured__price">$250</span>
+                    </div> -->
+                    <!-- <a href="/Services/LoyaltySolutions/">
+                        <button class="button featured__button">Know more</button>
+                    </a> -->
+                </article>
+
+                <article style="position: relative;
+    text-align: center;
+    background-color: var(--container-color);
+    padding: 2rem 2rem 0rem 2rem;
+    border: 1px solid var(--border-color);
+    overflow-y: hidden;
+    transition: 0.3s;
+    box-shadow: rgb(26 102 124 / 40%) -2px 0px 20px 0px;
+" >
+                    <!-- <span class="featured__tag">5 +</span> -->
+
+                    <img src="./assets/img/unicom_CERTIFICATION1.jpg" style="    width: 320px; height:auto;" alt="" class="featured__img">
+
+                    <!-- <div class="featured__data">
+                        <h3 class="featured__title">Home Appliances</h3>
+                        <span class="featured__price">$890</span>
+                    </div> -->
+                    <!-- <a href="/Services/DigitalSolutions/">
+                        <button class="button featured__button">Know more</button>
+                    </a> -->
+                </article>
+
+                <article style="position: relative;
+    text-align: center;
+    background-color: var(--container-color);
+    padding: 2rem 2rem 0rem 2rem;
+    border: 1px solid var(--border-color);
+    overflow-y: hidden;
+    transition: 0.3s;
+    box-shadow: rgb(26 102 124 / 40%) -2px 0px 20px 0px;
+" >
+                    <!-- <span class="featured__tag">5 +</span> -->
+
+                    <img src="./assets/img/unicom_CERTIFICATION2.jpg" style="    width: 320px; height:auto; " alt="" class="featured__img">
+
+                    <!-- <div class="featured__data">
+                        <h3 class="featured__title">Home Appliances</h3>
+                        <span class="featured__price">$890</span>
+                    </div> -->
+                    <!-- <a href="/Services/DigitalSolutions/">
+                        <button class="button featured__button">Know more</button>
+                    </a> -->
+                </article>
+
+
+            </div>
+        </section>
+
+
+
+        
+
+
+
+
+
+
+
 
 
 
@@ -798,10 +1328,10 @@
                             </a>
                             <a href="https://www.instagram.com/fedicoms/" target="_blank" class="footer__social">
                                 <i class="ri-instagram-fill"></i>
-                            <a href="https://www.linkedin.com/company/fedicoms-pvt-ltd/" target="_blank"
-                                class="footer__social">
-                                <i class="ri-linkedin-fill"></i>
-                            </a>
+                                <a href="https://www.linkedin.com/company/fedicoms-pvt-ltd/" target="_blank"
+                                    class="footer__social">
+                                    <i class="ri-linkedin-fill"></i>
+                                </a>
                         </div>
                     </div>
 
@@ -946,7 +1476,7 @@
 
 
         <!--++++++++++++++++++++++++++++++++++++++++++++++LAST BUTTON+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-        <div id="mybutton" style="bottom:10px;">
+        <!-- <div id="mybutton" style="bottom:10px;">
 
             <a href="https://wa.me/919971422423?text=" class="button" style="display: flex;
                 align-items: center;
@@ -975,7 +1505,7 @@
                 bottom: -4px;
                 right: 10px;
             }
-        </style>
+        </style> -->
 </body>
 
 </html>
