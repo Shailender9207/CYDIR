@@ -1,9 +1,9 @@
 /*=============== GOOGLE FONTS ===============*/
-  @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3rem;
-  --header-color: #001e5c;
+  --header-color: #007dc2;
   --header-text-color: #5FA5C8;
 
   /*========== Colors ==========*/
@@ -12,7 +12,7 @@
   --hue-color: 190;
 
   /* HSL color mode */
-  --first-color: 		hsl(200, 77%, 58%);
+  --first-color: 		#007dc2;
   --first-color-second: 	hsl(200, 55%, 50%);
   --first-color-alt: 	hsl(225, 39%, 35%);
   --title-color: hsl(225, 39%, 18%);
@@ -368,7 +368,7 @@ p{
 
 /* Change background header */
 .scroll-header {
-  background-color: var(--body-color);
+  color: var(--body-color);
   background-color: var(--header-color); 
   box-shadow: 0 0 4px rgba(14, 55, 63, 0.15);
 }
@@ -1000,16 +1000,17 @@ p{
     background-color: var(--white-color);
   } */
   .scroll-header .nav__link {
-    color: var(--header-text-color);
+    color: #ffffff;
   }
   .scroll-header .active-link {
-    color: var(--header-text-color);
+    color: #ffffff;
   }
   .scroll-header .active-link::before {
     background-color: var(--header-text-color);
   }
   .scroll-header .change-theme {
-    color: var(--text-color);
+    color: #ffffff;
+
   }
   .section {
     padding: 7rem 0 2rem;
@@ -1660,7 +1661,7 @@ justify-self: center;
   /* font-size: 16px;  
   border: none;
   outline: none; */
-  color: var(--text-color-light);
+  color: #ffffff;
   font-weight: var(--font-semi-bold);
 }
 
