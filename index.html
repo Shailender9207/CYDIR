@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 
 
-    <title>Fedicoms</title>
+    <title>UCTPL</title>
 
 
 
@@ -241,7 +241,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 flex-wrap: wrap;
-justify-content: center;
+justify-content: space-around;
 ">
 
     <div class="logoo__container">
@@ -270,14 +270,15 @@ justify-content: center;
 
 
 
-    <header class="header" id="header" style="position: sticky !important; border-radius:0px;   color:#5FA5C8 !important;">
+    <header class="header" id="header" style="position: sticky !important; border-radius:0px;">
         
 
-        <nav class="nav container">
+        <nav class="nav container" style="margin-right:20px;">
 
-            <div class="logo__container">
-<!-- placeholder -->
-            </div>
+            <!-- <div class="logo__container">
+placeholder
+            </div> -->
+            <br/>
 
 
             <div class="nav__menu" id="nav-menu">
@@ -286,26 +287,25 @@ justify-content: center;
                         <a href="#" class="nav__link active-link">HOME</a>
                     </li>
                     <li class="nav__item">
-                        <a href="/About/" class="nav__link">ABOUT US</a>
+                        <a href="/About/" class="nav__link">ABOUT</a>
                     </li>
                     <li class="nav__item">
                         <div class="dropdown">
-                            <div class=" dropbtn">SERVICES
+                            <div class=" dropbtn">PRODUCTS
                                 <i class="ri-arrow-drop-down-line"></i>
                             </div>
                             <div class="dropdown-content">
-                                <a class="nav__link" href="/Services/CampaignManagement/">Customer Engagement</a>
-                                <a class="nav__link" href="/Services/LoyaltySolutions/">Loyalty Solutions</a>
-                                <a class="nav__link" href="/Services/DigitalSolutions/">Digital Solutions</a>
-                                <a class="nav__link" href="/Services/DigiPass/">DigiPass - VMS</a>
-                                <a class="nav__link" href="/Services/CorporateGifting/">Corporate Gifting</a>
+                                <a class="nav__link" href="/Services/CampaignManagement/">Electrical</a>
+                                <a class="nav__link" href="/Services/LoyaltySolutions/">Automotive</a>
+                                <a class="nav__link" href="/Services/DigitalSolutions/">Home Appliances</a>
+                                
 
                             </div>
                         </div>
                     </li>
                     <li class="nav__item">
                         <div class="dropdown">
-                            <div class=" dropbtn">Infrastructure
+                            <div class=" dropbtn">INFRASTRUCTURE
                                 <i class="ri-arrow-drop-down-line"></i>
                             </div>
                             <div class="dropdown-content">
@@ -320,7 +320,7 @@ justify-content: center;
                         </div>
                     </li>
                     <li class="nav__item">
-                        <a href="/Career/" class="nav__link">CAREER</a>
+                        <a href="/Career/" class="nav__link">CUSTOMERS</a>
                     </li>
                     <li class="nav__item">
                         <a href="/Contact/" class="nav__link">CONTACT</a>
@@ -332,6 +332,10 @@ justify-content: center;
                     <span class="change-theme-name">Dark mode</span>
                     <i class="ri-moon-line change-theme" id="theme-button"></i>
                 </div>
+<!-- 
+                <div style="width: 25px;">
+
+                </div> -->
 
                 <i class="ri-close-line nav__close" id="nav-close"></i>
             </div>
@@ -339,6 +343,8 @@ justify-content: center;
             <div class="nav__toggle" id="nav-toggle">
                 <i class="ri-function-line"></i>
             </div>
+
+            
         </nav>
     </header>
 
@@ -521,12 +527,7 @@ justify-content: center;
                                 <h1 class="home__title1" style="margin-top: 50px;">UNITED COMPONENTS & TOOLS PVT. LTD
                                 </h1>
                                 <!-- <p class="home__description1">
-                                    Engage deeper with your customers across any preferred communication channels and
-                                    Expand opportunities with Fedicoms Mobile’s Communication APIs and Omni-channel
-                                    Solutions to deliver exceptional customer experience. Use our simplified
-                                    communication solutions to run multiple campaigns across different channels and
-                                    Engage with your users in real-time with innovative communication strategies and
-                                    improved engagement.</a></li>
+                                    lorem ipsum.</a></li>
 
                                     <br />
 
@@ -730,13 +731,14 @@ justify-content: center;
         <script>
 
             var but1 = document.querySelector(".swiper-button-next1");
-            setInterval(function () { console.log('1' + but1.click()); }, 5000);
+            //setInterval(function () { console.log('1' + but1.click()); }, 5000);
+            setInterval(function () { but1.click(); }, 5000);
 
         </script>
 
 
 
-        <!--==================== ABOUT Fedicoms ====================-->
+        <!--==================== ABOUT UCTPL ====================-->
 
 
         <div style="display: flex;
@@ -1119,7 +1121,8 @@ max-width: 500px;
         <script>
 
             var but2 = document.querySelector(".swiper-button-next2");
-            setInterval(function () { console.log('2' + but2.click()); }, 2000);
+            //setInterval(function () { console.log('2' + but2.click()); }, 2000);
+            setInterval(function () {  but2.click(); }, 2000);
 
         </script>
 
@@ -1196,6 +1199,7 @@ max-width: 500px;
                         <button class="button featured__button">Know more</button>
                     </a> -->
                 </article>
+
 
                 <article style="position: relative;
     text-align: center;
@@ -1274,7 +1278,7 @@ max-width: 500px;
         <!--==================== contact us ====================-->
         <section class="subscribe section">
             <div class="subscribe__bg">
-                <div class="subscribe__container container">
+                <div class="subscribe__container container" style="background-color: #007dc2de;">
                     <h2 class="section__title subscribe__title">Feel Free To <br> Connect with us</h2>
                     <p class="subscribe__description">
                         Any kind of Business Solution or Consultation, Don’t Hesitate to Contact With Us...
@@ -1330,21 +1334,37 @@ max-width: 500px;
             <div class="footer__container container grid">
                 <div class="footer__content grid">
                     <div class="footer__data">
-                        <h3 class="footer__title">Fedicoms</h3>
-                        <p class="footer__description">a strategic partner to enterprise &#38; mid-size companies
+                        <h3 class="footer__title">Quick Links</h3>
+                        <!-- <p class="footer__description">a strategic partner to enterprise &#38; mid-size companies
                             across industries.
-                        </p>
+                        </p> -->
+
+                        <ul>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link"><i class="ri-links-line"></i> Home</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="/About/" class="footer__link"><i class="ri-links-line"></i> About</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="/Career/" class="footer__link"><i class="ri-links-line"></i> Customers</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="../Contact/" class="footer__link"><i class="ri-links-line"></i> Contact</a>
+                            </li>
+                        </ul>
+
                         <div>
-                            <a href="https://www.facebook.com/people/Fedicoms-Pvt-Ltd/100088110609713/" target="_blank"
+                            <a href="https://www.facebook.com/people/UCTPL-Pvt-Ltd/100088110609713/" target="_blank"
                                 class="footer__social">
                                 <i class="ri-facebook-box-fill"></i>
                             </a>
-                            <a href="https://twitter.com/FedicomsLtd" target="_blank" class="footer__social">
+                            <a href="https://twitter.com/UCTPLLtd" target="_blank" class="footer__social">
                                 <i class="ri-twitter-fill"></i>
                             </a>
-                            <a href="https://www.instagram.com/fedicoms/" target="_blank" class="footer__social">
+                            <a href="https://www.instagram.com/UCTPL/" target="_blank" class="footer__social">
                                 <i class="ri-instagram-fill"></i>
-                                <a href="https://www.linkedin.com/company/fedicoms-pvt-ltd/" target="_blank"
+                                <a href="https://www.linkedin.com/company/UCTPL-pvt-ltd/" target="_blank"
                                     class="footer__social">
                                     <i class="ri-linkedin-fill"></i>
                                 </a>
@@ -1352,45 +1372,51 @@ max-width: 500px;
                     </div>
 
                     <div class="footer__data">
-                        <h3 class="footer__subtitle">Quick Links</h3>
+                        <h3 class="footer__subtitle">Products</h3>
                         <ul>
                             <li class="footer__item">
-                                <a href="#" class="footer__link"><i class="ri-links-line"></i> Home</a>
+                                <a href="/Services/CampaignManagement/" class="footer__link"><i
+                                        class="ri-product-hunt-fill"></i> Electrical</a>
                             </li>
                             <li class="footer__item">
-                                <a href="/About/" class="footer__link"><i class="ri-links-line"></i> About Us</a>
+                                <a href="/Services/LoyaltySolutions/" class="footer__link"><i
+                                        class="ri-product-hunt-fill"></i> Automotive</a>
                             </li>
                             <li class="footer__item">
-                                <a href="/Career/" class="footer__link"><i class="ri-links-line"></i> Career</a>
+                                <a href="/Services/DigitalSolutions/" class="footer__link"><i
+                                        class="ri-product-hunt-fill"></i> Home Appliances</a>
                             </li>
-                            <li class="footer__item">
-                                <a href="../Contact/" class="footer__link"><i class="ri-links-line"></i> Contact</a>
-                            </li>
+                           
+
                         </ul>
                     </div>
 
                     <div class="footer__data">
-                        <h3 class="footer__subtitle">Services</h3>
+                        <h3 class="footer__subtitle">Infrastructure</h3>
                         <ul>
                             <li class="footer__item">
                                 <a href="/Services/CampaignManagement/" class="footer__link"><i
-                                        class="ri-24-hours-line"></i> Customer Engagement</a>
+                                        class="ri-tools-fill"></i> Research & Development </a>
                             </li>
                             <li class="footer__item">
                                 <a href="/Services/LoyaltySolutions/" class="footer__link"><i
-                                        class="ri-24-hours-line"></i> Loyalty Solutions</a>
+                                        class="ri-tools-fill"></i> Tool Room</a>
                             </li>
                             <li class="footer__item">
                                 <a href="/Services/DigitalSolutions/" class="footer__link"><i
-                                        class="ri-24-hours-line"></i> Digital Solutions</a>
+                                        class="ri-tools-fill"></i> Press Shop</a>
                             </li>
                             <li class="footer__item">
                                 <a href="../Services/DigiPass/" class="footer__link"><i
-                                        class="ri-24-hours-line"></i>DigiPass - VMS</a>
+                                        class="ri-tools-fill"></i> Welding and Tapping</a>
                             </li>
                             <li class="footer__item">
                                 <a href="../Services/CorporateGifting/" class="footer__link"><i
-                                        class="ri-24-hours-line"></i>Corporate Gifting</a>
+                                        class="ri-tools-fill"></i> Inspection and Testing</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="../Services/CorporateGifting/" class="footer__link"><i
+                                        class="ri-tools-fill"></i> Raw Material</a>
                             </li>
 
                         </ul>
@@ -1399,26 +1425,29 @@ max-width: 500px;
                     <div class="footer__data">
                         <h3 class="footer__subtitle">Contact</h3>
                         <ul>
-                            <li class="footer__item">
-                                <a class="footer__link Click-here"><i class="ri-map-pin-line"></i> 10/5, FF, Ashok
-                                    Nagar</a>
+                            <li class="footer__item" style="text-align: justify;">
+                                <a class="footer__link Click-here"><i class="ri-map-pin-line"></i> Khasra No. 672/692, Duhai Industrial Area,
+                            Delhi-Meerut Road, Ghaziabad Uttar Pradesh-201206</a>
                             </li>
+                            
                             <li class="footer__item">
-                                <a class="footer__link Click-here">&nbsp; &nbsp; &nbsp; New Delhi 110018</a>
-                            </li>
-                            <li class="footer__item">
-                                <a href="mailto:info@fedicoms.com" class="footer__link"><i
-                                        class="ri-mail-send-line"></i> info@fedicoms.com</a>
+                                <a href="mailto:info@UCTPL.com" class="footer__link"><i
+                                        class="ri-mail-send-line"></i> info@UCTPL.com</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="footer__rights">
-                    <p class="footer__copy">&#169; 2023 Fedicoms. All rigths reserved.</p>
+                    <p class="footer__copy" style="
+                    text-align: center;
+                ">&#169; 2023 UNITED COMPONENTS AND TOOLS PRIVATE LIMITED. All rigths reserved.</p>
                     <div class="footer__terms">
-                        <a href="#" class="footer__terms-link">Terms &#38; Agreements</a>
-                        <a href="#" class="footer__terms-link">Privacy Policy</a>
+                        <!-- <a href="#" class="footer__terms-link">Terms &#38; Agreements</a>
+                        <a href="#" class="footer__terms-link">Privacy Policy</a> -->
+
+                        <a href="#" class="footer__terms-link">An IATF 16949:2016 and 9001:2015 Certified Company</a>
+
                     </div>
                 </div>
             </div>
@@ -1438,7 +1467,7 @@ max-width: 500px;
 
 
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2146.5833915160565!2d77.10005330837016!3d28.637536664250476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d049fcf51d25f%3A0xc2107883da8991cb!2sFedicoms!5e0!3m2!1sen!2sin!4v1676028182220!5m2!1sen!2sin"
+                            src="https://maps.google.com/maps?q=M/s%20United%20Components%20and%20Tools%20Pvt%20Ltd%20Khasra%20No.%20672/692,%20Duhai%20Industrial%20Area,%20Delhi-Meerut%20Road,%20Ghaziabad%20Uttar%20Pradesh-201206,%20Landmark:%20Behind%20HLM%20College&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                             width="100%" height="420px" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
 
