@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="./../../assets/img/logoSmall.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="./../../assets/css/swiper-bundle.min.css">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="./../../assets/css/styles.css">
+
+
+    <title>UCTPL</title>
+
+    <!-- for google map popup from footer -->
+
+    <style>
+        .custom-model-main {
+            text-align: center;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* z-index: 1050; */
+            -webkit-overflow-scrolling: touch;
+            outline: 0;
+            opacity: 0;
+            -webkit-transition: opacity 0.15s linear, z-index 0.15;
+            -o-transition: opacity 0.15s linear, z-index 0.15;
+            transition: opacity 0.15s linear, z-index 0.15;
+            z-index: -1;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .model-open {
+            z-index: 99999;
+            opacity: 1;
+            overflow: hidden;
+        }
+
+        .custom-model-inner {
+            -webkit-transform: translate(0, -25%);
+            -ms-transform: translate(0, -25%);
+            transform: translate(0, -25%);
+            -webkit-transition: -webkit-transform 0.3s ease-out;
+            -o-transition: -o-transform 0.3s ease-out;
+            transition: -webkit-transform 0.3s ease-out;
+            -o-transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+            display: inline-block;
+            vertical-align: middle;
+            width: 600px;
+            margin: 30px auto;
+            max-width: 97%;
+        }
+
+        .custom-model-wrap {
+            display: block;
+            width: 100%;
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #999;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            background-clip: padding-box;
+            outline: 0;
+            text-align: left;
+            padding: 20px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .model-open .custom-model-inner {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            transform: translate(0, 0);
+            position: relative;
+            z-index: 999;
+        }
+
+        .model-open .bg-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99;
+        }
+
+        .bg-overlay {
+            background: rgba(0, 0, 0, 0);
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            -webkit-transition: background 0.15s linear;
+            -o-transition: background 0.15s linear;
+            transition: background 0.15s linear;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 0;
+            top: -30px;
+            cursor: pointer;
+            z-index: 99;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        @media screen and (min-width:800px) {
+            .custom-model-main:before {
+                content: "";
+                display: inline-block;
+                height: auto;
+                vertical-align: middle;
+                margin-right: -0px;
+                height: 100%;
+            }
+        }
+
+        @media screen and (max-width:799px) {
+            .custom-model-inner {
+                margin-top: 45px;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- completed dependencies container for google maps popup from footer -->
+
+
+
+
+</head>
+
+<body>
+    <div class="aboveHeader" style="
+display: flex;
+flex-direction: row;
+align-items: center;
+flex-wrap: wrap;
+justify-content: center;
+">
+
+        <div class="logoo__container">
+
+            <img src="./../../assets/img/unicom_log.jpg"
+                style="width:180px; height:60px; border-radius: 0px !important;">
+            <!-- <a href="#" class="nav__logo"> </a>     -->
+
+        </div>
+
+        <div class="cert__container" style="padding:15px">
+
+            <h2 style="text-align: center;">
+                UNITED COMPONENTS AND TOOLS PRIVATE LIMITED
+            </h2>
+
+            <p style="text-align: center;">
+                An IATF 16949:2016 and 9001:2015 Certified Company
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <header class="header" id="header"
+        style="position: sticky !important; border-radius:0px;   color:#5FA5C8 !important;">
+
+
+        <nav class="nav container">
+
+            <div class="logo__container">
+                <!-- placeholder -->
+            </div>
+
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="./../../index.html" class="nav__link active-link">HOME</a>
+                    </li>
+                    <li class="nav__item active">
+                        <a href="./../../About/index.html" class="nav__link">ABOUT US</a>
+                    </li>
+                    <li class="nav__item">
+                        <div class="dropdown">
+                            <div class=" dropbtn">SERVICES
+                                <i class="ri-arrow-drop-down-line"></i>
+                            </div>
+                            <div class="dropdown-content">
+                                <a class="nav__link" href="./../../Services/CampaignManagement/">Customer Engagement</a>
+                                <a class="nav__link" href="./../../Services/LoyaltySolutions/">Loyalty Solutions</a>
+                                <a class="nav__link" href="./../../Services/DigitalSolutions/">Digital Solutions</a>
+                                <a class="nav__link" href="./../../Services/DigiPass/">DigiPass - VMS</a>
+                                <a class="nav__link" href="./../../Services/CorporateGifting/">Corporate Gifting</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <div class="dropdown">
+                            <div class=" dropbtn">Infrastructure
+                                <i class="ri-arrow-drop-down-line"></i>
+                            </div>
+                            <div class="dropdown-content">
+                                <a class="nav__link" href="./../Research_and_development/index.html">Research &
+                                    Development</a>
+                                <a class="nav__link" href="./../TechnicalUpgradation/index.html">Technical Upgradation
+                                </a>
+                                <a class="nav__link" href="./../Tool_room/index.html">Tool Room</a>
+                                <a class="nav__link" href="#">Press Shop</a>
+                                <a class="nav__link" href="./../WeldingTapping/index.html">Welding and
+                                    Tapping</a>
+                                <a class="nav__link" href="./../InspectionTesting/index.html">Inspection
+                                    and Testing</a>
+                                <a class="nav__link" href="./../RawMaterial/index.html">Raw Material</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./../../Career/index.html" class="nav__link">CAREER</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./../../Contact/index.html" class="nav__link">CONTACT</a>
+                    </li>
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="subscribe section himg" style="padding-top: 74px; border-radius: 0px !important;">
+            <div style="width: 100%; height:200px; padding:0%;   position: relative; text-align: center;">
+                <img src="./../../assets/img/infra/press_shop/header.jpg" alt=""
+                    style="border-radius: 0px !important; width:100%; height: 200px;   object-fit: cover;   object-position: center;                        ">
+                <div style="  position: absolute; bottom: 8px; left: 16px;">
+                    <h1 class="section__title" style="margin-left: 15px; margin-bottom: 15px; color: aliceblue; ">
+                        <b>Press Shop</b>
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="about__container container ">
+
+                    <div class="about__img" style="margin: 3rem;">
+                        <div class="about__img-overlay">
+                            <img src="./../../assets/img/infra/press_shop/main.jpg" alt="" style="max-height: 150px;">
+
+                        </div>
+                    </div>
+
+                    <div class="about_finalApproach">
+                        <!-- <h2 class="section__title about__title">Innovation</h2> -->
+
+
+                        <div class="tu_upgradation">
+                            <div class="tu_upgradation_list">
+                                <div class="tu_upgradation_detail">
+                                    <p class="about__description">In our Press Shop we have well experienced operators operating presses from 25 tons to 600 tons using progressive and stage tools.
+
+                                    </p>
+                                    <p class="about__description">
+                                        The introduction of servo feeder and robotic part pick and place in tool has further helped us in increasing the rate of production
+
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section>
+            <marquee style="margin-top:6%;" behavior="scroll" direction="left">
+                <img src="./../../assets/img/infra/press_shop/slide1.jpg" alt="1mg" class="featured__img"
+                    style="height: 150px;">
+                <img src="./../../assets/img/infra/press_shop/slide2.jpg" alt="tata fiber" class="featured__img"
+                    style="height: 150px;">
+                <img src="./../../assets/img/infra/press_shop/slide3.jpg" alt="venus" class="featured__img"
+                    style="height: 150px;">
+                <img src="./../../assets/img/infra/press_shop/slide4.jpg" alt="sgs" class="featured__img"
+                    style="height: 150px;">
+                <img src="./../../assets/img/infra/press_shop/slide6.jpg" alt="fever" class="featured__img"
+                    style="height: 150px;">
+                <img src="./../../assets/img/infra/press_shop/slide7.jpg" alt="myTeam" class="featured__img"
+                    style="height: 150px;">
+               
+
+            </marquee>
+        </section>
+
+        <section>
+            <div class="tool_room_machine_list">
+                <h1 class="about__description">Press Shop Machine List ...</h1>
+                <div class="tool_list">
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Hydraulic Machine<span>( 600 Ton)</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">600 Ton Hydraulic Press offered by us is completely suitable to be used for both metal & PTFE polymer and assures excellent working efficiency. It is equipped with user-friendly control panel to ensure better maneuverability with long service life.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/hydraulic600.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Hydraulic Machine  <span>( 400 Ton)</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">Frame is fabricated from IS-2062 graded rolled steel plates table and cutting beam deeply reinforced and fines machines after stress reliving. The interlocked design put the direct support to frame. These frames are strain free and eliminate welds at load supports.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/400-ton-hydraulic-press.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Hydraulic Machine <span>250 Ton</span> </button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">This is a 250 ton Plc based Fully Automatic Hydraulic Press PLC Machine with push pull and two die plate ejector for rubber components. A hydraulic press is a device used to press out materials, aiding facilities in fabrication, assembly and maintenance.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/250Hydraulic.webp" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine<span>250 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">A pneumatic system is a collection of interconnected components using compressed air to do work for automated equipment. Examples can be found in industrial manufacturing, a home garage or a dentist office. This work is produced in the form of linear or rotary motion.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/pnumeaicPower250.webp" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine<span>160 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">160 ton gap type single crank pneumatic press, steel plate welded body after temperature treatment for high rigidness and releasing the welding stress, casting iron ram and bolster, forged crankshaft and ram adjust ball screw, ram adjustable by flat motor fixed on the back.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/pneumatic-press-machine-160-ton.jpeg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Mechanical Machine <span>150 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description"> Mechanical 150 Ton Heavy Duty Power Press Machine, Automatic. Frame Contraction: High Speed Press fabricated from IS-2062 graded rolled steel plates. Frame is deeply reinforced and fines machines after stress reliving. The interlocked design put the direct support to frame.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/pneumatic-press-machine-160-ton.jpeg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine <span>125 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description"> Pneumatic presses are operated by gas or air that is pressurized. Air is forced into a cylinder, and when pressure is applied the press moves downward. After the press has completed the task at hand, the air is released through valves and springs move the pump back up inside the cylinder.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/bss-125-ton-c-type-pneumatic-power-press.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine <span>100 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">100 ton Pneumatic power press punching machine, c frame punching machine price. The pneumatic punching machine uses the high-pressure gas generated by the compressor to deliver the compressed gas to the solenoid valve through the pipeline, and controls the action of the solenoid valve through the foot switch to control the work and return of the cylinder, so as to achieve the purpose of punching.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/godrej-pneumatic-drilling-machine-1.jpgs" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine <span>80 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">Graded casting of slide with long gibbings providing full support to wide dies, slide face is exceptionally large. Front to back crank shaft designs permits automatic feeding in any direction. Liberal slide and bed area, easy stroke adjustment mechanism increases press versatility tremendously.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/godrej-pneumatic-drilling-machine-1.jpgs" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine <span>75 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">Pneumatic presses work by applying pressure to workpiece. When a workpiece is placed in the middle of a pneumatic press, it will be exposed to pressure. The top of the pneumatic press will push down onto the workpiece. Due to the pressure behind it, the pneumatic press will then manipulate the workpiece.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/power-press-75-ton-2.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine <span>63 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">Pneumatic presses work by applying pressure to workpiece. When a workpiece is placed in the middle of a pneumatic press, it will be exposed to pressure. The top of the pneumatic press will push down onto the workpiece. Due to the pressure behind it, the pneumatic press will then manipulate the workpiece.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/60_ton_cross-shaft-power-press-500x500.webp" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Mechanical Machine <span>50 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">A Power Press Machine is used for cutting metal in a particular shape. It is a machine with a controlled system that is used for processing various types of sheet metal. A multipurpose machine, it is used for shaping and cutting at the same time.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/50_ton_power-press-machines-8.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Mechanical Machine <span>30 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">A Power Press Machine is used for cutting metal in a particular shape. It is a machine with a controlled system that is used for processing various types of sheet metal. A multipurpose machine, it is used for shaping and cutting at the same time.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/30-ton-mechanical-power-press-machine.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Pneuamatic Machine <span>25 Ton</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">The frame is welding with whole steel plate which has high rigidity, reasonable structure and beautiful design.The press adopts the vertical crankshaft structure. The distance of fulcrum is short and the crank is rigid.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/30-ton-mechanical-power-press-machine.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Shearing Machine <span>6.0 mm</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">Shearing machines are multipurpose devices used in the cutting of alloys and other sheet metal. Some shearing machines use a scissor-like, angular shear action to cut metal into sheets or strips.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/shearing_6mm_product-jpeg-500x500.webp" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Servo Feeder <span>3x300</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">The Servo Feeder System offers the ability to improve production quality and customize the gob forming. The Feeder System includes the Feeder Plunger, Tube Height and Rotation and the Shear Mechanism as well as the optional Metering Spout System.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/servofeeder_2-ton-nc-servo-feeder.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">pneumatic feeder<span>3x300</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">Pneumatic feeders, also known as air feeders, are widely used in the manufacturing industry for feeding metal sheets into a power press. They consist of a metal plate that holds the metal sheet and a set of pneumatic cylinders that move the plate and the sheet forward</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/servofeeder_2-ton-nc-servo-feeder.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Straightner feeder<span>3x300</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">The device consists of a hydraulic cylinder fitted to the bottom inlet roll carrier. The ram is designed so that when under pressure and at the top of its stroke, angular adjustment can be made to the roll with same case as is associated with the other angular roll adjustments.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/ss-plate-straightening-machine-500x500.webp" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Tapping Machine<span>M6</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">A tapping machine is a device used to test the impact sound insulation of floors, for measurements of impact noise (noise of footsteps) in the field of building acoustics.</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <img src="./../../assets/img/infra/press_shop/tapping-machine.jpg" style="max-height: 220px;"></img>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool_list_accordion">
+                        <button class="tool_accordion">Vibrator <span>500L</span></button>
+                        <div class="tool_panel">
+                            <div class="tool_content">
+                                <div class="tool_content_details">
+                                    <p class="about__description">"""</p>
+                                </div>
+                                <div class="tool_content_img">
+                                    <!-- <img src="./../../assets/img/infra/press_shop/tapping-machine.jpg" style="max-height: 220px;"></img> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!--==================== VIDEO ====================-->
+        <section class="video section" style="display:none;">
+            <h2 class="section__title">Video Tour</h2>
+
+            <div class="video__container container">
+                <p class="video__description">Find out more with our video of the most beautiful and
+                    pleasant places for you and your family.
+                </p>
+
+                <div class="video__content">
+                    <video id="video-file">
+                        <source src="assets/video/video.mp4" type="video/mp4">
+                    </video>
+
+                    <button class="button button--flex video__button" id="video-button">
+                        <i class="ri-play-line video__button-icon" id="video-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">UCTPL</h3>
+                    <p class="footer__description">a strategic partner to enterprise &#38; mid-size companies across
+                        industries.
+                    </p>
+                    <div>
+                        <a href="https://www.facebook.com/people/Fedicoms-Pvt-Ltd/100088110609713/" target="_blank"
+                            class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/FedicomsLtd" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/fedicoms/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/fedicoms-pvt-ltd/" target="_blank"
+                            class="footer__social">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Quick Links</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="./../../index.html" class="footer__link"><i class="ri-links-line"></i> Home</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="./../../About/index.html" class="footer__link"><i class="ri-links-line"></i> About
+                                Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="./../../Career/index.html" class="footer__link"><i class="ri-links-line"></i>
+                                Career</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="./../../Contact/index.html" class="footer__link"><i class="ri-links-line"></i>
+                                Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Services</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="./../../Services/CampaignManagement/" class="footer__link"><i
+                                    class="ri-24-hours-line"></i>Customer Engagement</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="./../../Services/LoyaltySolutions/" class="footer__link"><i
+                                    class="ri-24-hours-line"></i> Loyalty Solutions</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="./../../Services/DigitalSolutions/" class="footer__link"><i
+                                    class="ri-24-hours-line"></i> Digital Solutions</a>
+                        </li>
+
+                        <li class="footer__item">
+                            <a href="./../../Services/DigiPass/" class="footer__link"><i
+                                    class="ri-24-hours-line"></i>DigiPass - VMS</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="./../../Services/CorporateGifting/" class="footer__link"><i
+                                    class="ri-24-hours-line"></i>Corporate Gifting</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Contact</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a class="footer__link Click-here"><i class="ri-map-pin-line"></i> : Khasra No. 672/692,
+                                Duhai Industrial Area, Delhi Meerut Road, Murad Nagar, Ghaziabad</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link Click-here">&nbsp; &nbsp; &nbsp; Uttar Pradesh 201206</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="mailto:info@fedicoms.com" class="footer__link"><i class="ri-mail-send-line"></i> :
+                                : hr@unicomtools.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy">&#169; 2023 UCTPL. All rigths reserved.</p>
+                <div class="footer__terms">
+                    <a href="#" class="footer__terms-link">Terms &#38; Agreements</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- google maps popup container start -->
+
+    <div class="custom-model-main">
+        <div class="custom-model-inner">
+            <div class="close-btn"><i class="ri-close-line"></i></div>
+            <div class="custom-model-wrap">
+                <div class="pop-up-content-wrap">
+
+
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2146.5833915160565!2d77.10005330837016!3d28.637536664250476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d049fcf51d25f%3A0xc2107883da8991cb!2sFedicoms!5e0!3m2!1sen!2sin!4v1676028182220!5m2!1sen!2sin"
+                        width="100%" height="420px" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="bg-overlay"></div>
+    </div>
+
+    <script>
+
+
+        $(".Click-here").on('click', function () {
+            $(".custom-model-main").addClass('model-open');
+        });
+        $(".close-btn, .bg-overlay").click(function () {
+            $(".custom-model-main").removeClass('model-open');
+        });
+
+
+
+    </script>
+
+    <!-- google maps popup container complete -->
+
+
+    <style>
+        .tool_panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: auto;
+            transition: max-height 1s ease-out;
+        }
+    </style>
+
+    <script>
+        var acc = document.getElementsByClassName("tool_accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("tool_active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = 200 + "px";
+                }
+            });
+        }
+    </script>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="./../../assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="./../../assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="./../../assets/js/main.js"></script>
+
+
+    <!--++++++++++++++++++++++++++++++++++++++++++++++LAST BUTTON+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <div id="mybutton" style="bottom:10px;">
+
+        <a href="https://wa.me/919971422423?text=" class="button" style="display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 3px 9px;
+            background-color: aliceblue;
+            border: 2px solid green;
+        "><i class="fa fa-whatsapp" style="font-size:48px;color:rgb(40, 194, 58);"></i>
+            <p style="    color: green;
+                margin-right: 5px;"> &nbsp; Chat With Us</p>
+        </a>
+
+    </div>
+    <style>
+        .feedback {
+            background-color: white;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border-radius: 4px;
+            border-color: #46b8da;
+        }
+
+        #mybutton {
+            position: fixed;
+            bottom: -4px;
+            right: 10px;
+        }
+    </style>
+</body>
+
+</html>
+
+
+<!--+++++++++++++++++++++++++++Code is Written By Shailender+++++++++++++++++++++++++++++-->
