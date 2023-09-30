@@ -1018,7 +1018,7 @@ p{
   }
   .nav__list {
     flex-direction: row;
-    column-gap: 2.0rem;
+    column-gap: 2.0rem ;
   }
   .nav__toggle,
   .nav__close {
@@ -1116,7 +1116,7 @@ p{
 @media screen and (min-width: 1024px) {
   .nav__list {
     flex-direction: row;
-    column-gap: 3.90rem;
+    column-gap: 2rem;
   }
   
   .container {
