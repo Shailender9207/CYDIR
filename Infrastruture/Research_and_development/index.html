@@ -154,47 +154,53 @@
 </head>
 
 <body>
-    <div class="aboveHeader" style="
+    <section>
+
+        <div class="aboveHeader container grid" style="
 display: flex;
 flex-direction: row;
 align-items: center;
 flex-wrap: wrap;
-justify-content: center;
+justify-content: space-around;
 ">
 
-        <div class="logoo__container">
+            <div class="logoo__container">
 
-            <img src="./../../assets/img/unicom_log.jpg"
-                style="width:180px; height:60px; border-radius: 0px !important;">
-            <!-- <a href="#" class="nav__logo"> </a>     -->
+                <img src="./../../assets/img/unicom_log.jpg" style="width:180px; height:60px; border-radius: 0px !important;">
+                <!-- <a href="#" class="nav__logo"> </a>     -->
+
+            </div>
+
+            <div class="cert__container" style="padding:15px">
+
+                <h2 style="text-align: center;">
+                    UNITED COMPONENTS AND TOOLS PRIVATE LIMITED
+                </h2>
+
+                <p style="text-align: center; font-weight: 800;">
+                    An IATF 16949:2016 and 9001:2015 Certified Company
+                </p>
+
+            </div>
+
 
         </div>
 
-        <div class="cert__container" style="padding:15px">
-
-            <h2 style="text-align: center;">
-                UNITED COMPONENTS AND TOOLS PRIVATE LIMITED
-            </h2>
-
-            <p style="text-align: center;">
-                An IATF 16949:2016 and 9001:2015 Certified Company
-            </p>
-
-        </div>
+    </section>
 
 
-    </div>
 
 
-    <header class="header" id="header"
-        style="position: sticky !important; border-radius:0px;   color:#5FA5C8 !important;">
+
+    <header class="header" id="header" style="position: sticky !important; border-radius:0px;">
 
 
         <nav class="nav container">
 
-            <div class="logo__container">
-                <!-- placeholder -->
-            </div>
+            <!-- <div class="logo__container">
+placeholder
+            </div> -->
+            <br />
 
 
             <div class="nav__menu" id="nav-menu">
@@ -202,46 +208,41 @@ justify-content: center;
                     <li class="nav__item">
                         <a href="./../../index.html" class="nav__link active-link">HOME</a>
                     </li>
-                    <li class="nav__item active">
-                        <a href="./../../About/index.html" class="nav__link">ABOUT US</a>
+                    <li class="nav__item">
+                        <a href="./../../About/" class="nav__link">ABOUT</a>
                     </li>
                     <li class="nav__item">
                         <div class="dropdown">
-                            <div class=" dropbtn">SERVICES
+                            <div class=" dropbtn">PRODUCTS
                                 <i class="ri-arrow-drop-down-line"></i>
                             </div>
                             <div class="dropdown-content">
-                                <a class="nav__link" href="./../../Services/CampaignManagement/">Customer Engagement</a>
-                                <a class="nav__link" href="./../../Services/LoyaltySolutions/">Loyalty Solutions</a>
-                                <a class="nav__link" href="./../../Services/DigitalSolutions/">Digital Solutions</a>
-                                <a class="nav__link" href="./../../Services/DigiPass/">DigiPass - VMS</a>
-                                <a class="nav__link" href="./../../Services/CorporateGifting/">Corporate Gifting</a>
+                                <a class="nav__link" href="/Services/CampaignManagement/">Electrical</a>
+                                <a class="nav__link" href="/Services/LoyaltySolutions/">Automotive</a>
+                                <a class="nav__link" href="/Services/DigitalSolutions/">Home Appliances</a>
+
 
                             </div>
                         </div>
                     </li>
                     <li class="nav__item">
                         <div class="dropdown">
-                            <div class=" dropbtn">Infrastructure
+                            <div class=" dropbtn">INFRASTRUCTURE
                                 <i class="ri-arrow-drop-down-line"></i>
                             </div>
                             <div class="dropdown-content">
-                                <a class="nav__link" href="#">Research &
-                                    Development</a>
-                                <a class="nav__link" href="./../TechnicalUpgradation/index.html">Technical Upgradation
-                                </a>
+                                <a class="nav__link" href="#">Research & Development</a>
+                                <a class="nav__link" href="./../TechnicalUpgradation/index.html">Technical Upgradation </a>
                                 <a class="nav__link" href="./../Tool_room/index.html">Tool Room</a>
                                 <a class="nav__link" href="./../PressShop/index.html">Press Shop</a>
-                                <a class="nav__link" href="./../WeldingTapping/index.html">Welding and
-                                    Tapping</a>
-                                <a class="nav__link" href="./../InspectionTesting/index.html">Inspection
-                                    and Testing</a>
+                                <a class="nav__link" href="./../WeldingTapping/index.html">Welding and Tapping</a>
+                                <a class="nav__link" href="./../InspectionTesting/index.html">Inspection and Testing</a>
                                 <a class="nav__link" href="./../RawMaterial/index.html">Raw Material</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav__item">
-                        <a href="./../../Career/index.html" class="nav__link">CAREER</a>
+                        <a href="./../../Career/index.html" class="nav__link">CUSTOMERS</a>
                     </li>
                     <li class="nav__item">
                         <a href="./../../Contact/index.html" class="nav__link">CONTACT</a>
@@ -253,6 +254,10 @@ justify-content: center;
                     <span class="change-theme-name">Dark mode</span>
                     <i class="ri-moon-line change-theme" id="theme-button"></i>
                 </div>
+                <!-- 
+                <div style="width: 25px;">
+
+                </div> -->
 
                 <i class="ri-close-line nav__close" id="nav-close"></i>
             </div>
@@ -260,6 +265,8 @@ justify-content: center;
             <div class="nav__toggle" id="nav-toggle">
                 <i class="ri-function-line"></i>
             </div>
+
+
         </nav>
     </header>
     <main class="main">
