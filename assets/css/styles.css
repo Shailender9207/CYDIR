@@ -25,7 +25,7 @@
   --scroll-bar-color: hsl(190, 12%, 90%);
   --scroll-thumb-color: hsl(190, 12%, 75%);
   --card-background:hsl(199, 100%, 95%);
-
+--accordion-background:#ffffff;
   /*========== Font and typography ==========*/
   --body-font: "Arial", sans-serif;;
   --title-font: "Arial", sans-serif;
@@ -177,7 +177,7 @@ body.dark-theme {
     --scroll-bar-color: hsl(190, 12%, 48%);
     --scroll-thumb-color: hsl(190, 12%, 36%);
     --card-background: hsl(225, 50%, 25%);
-
+    --accordion-background:hsl(225deg 39.76% 27.61%);
 }
 
 /*========== Button Dark/Light ==========*/
@@ -560,6 +560,7 @@ p{
 
 .about__description {
   margin-bottom: var(--mb-2);
+  font-size: var(--normal-font-size);
 }
 
 .about__img {
@@ -977,6 +978,17 @@ p{
   .video__container {
     padding: 0;
   }
+  .tool_panel{
+    background-color: var(--card-background) !important;
+  }
+  .tool_content .tool_content_details{
+    width: 95% !important;
+  }
+  .tool_content .tool_content_img{
+    width: 95% !important;
+    padding: 1rem;
+  }
+ 
 }
 
 /* For medium devices */
@@ -992,6 +1004,9 @@ p{
   .subscribe__form {
     width: 470px;
     margin: 0 auto;
+  }
+  .tool_content .tool_content_details{
+    width: 95%;
   }
 }
 
@@ -1111,6 +1126,7 @@ p{
     justify-content: space-between;
   }
 }
+
 
 /* For large devices */
 @media screen and (min-width: 1024px) {
@@ -1806,7 +1822,7 @@ justify-self: center;
 }
 
 .tool_list_accordion {
-  margin: 2rem;
+  margin: 2rem 0.5rem;
 }
 
 .tool_accordion:after {
@@ -1832,8 +1848,11 @@ justify-self: center;
 .tool_content .tool_content_details{
   width: 65%;
 }
-@media screen and (max-width: 340px) {
-  .tool_content .tool_content_details{
-    width: 95%;
-  }
+.tool_content .tool_content_img{
+  width: 35%;
+  padding: 1rem;
+}
+
+.tool_panel{
+  background-color: var(--accordion-background) !important;
 }
